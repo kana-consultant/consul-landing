@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfect10 AI — Otomasi AI untuk Efisiensi Operasional Bisnis</title>
+<meta name="description" content="Kurangi pekerjaan manual, percepat proses operasional, dan bantu tim mengambil keputusan lebih cepat dengan AI agent yang terintegrasi dengan sistem bisnis Anda.">
+
+<!-- Meta Pixel placeholder — ganti PIXEL_ID -->
+<!--
+<script>
+!function(f,b,e,v,n,t,s){...standard Meta Pixel snippet...}();
+fbq('init', 'PIXEL_ID');
+fbq('track', 'PageView');
+</script>
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --violet:#4a00b0;
+    --violet-2:#6d28d9;
+    --blue:#3080ff;
+    --blue-light:#5b8ef2;
+    --jade:#1fd6a6;
+    --jade-2:#00c758;
+    --navy:#0d0822;
+    --navy-2:#16103a;
+    --ink:#101828;
+    --slate:#475569;
+    --slate-light:#64748b;
+    --line:#e6e8f0;
+    --bg:#ffffff;
+    --bg-soft:#f7f8fc;
+    --radius:16px;
+    --maxw:1140px;
+    --display:'Plus Jakarta Sans',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:var(--display);line-height:1.15;letter-spacing:-0.02em}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .accent{color:var(--jade-2)}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(13,8,34,.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.03em;color:#fff}
+  .logo b{color:var(--jade)}
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--jade-2);color:#04211a;
+    font-family:var(--display);font-weight:700;font-size:14px;
+    padding:10px 20px;border-radius:10px;text-decoration:none;
+    transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(31,214,166,.35)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 500px at 12% -10%, rgba(109,40,217,.55), transparent 60%),
+      radial-gradient(800px 600px at 100% 0%, rgba(48,128,255,.45), transparent 55%),
+      radial-gradient(700px 500px at 85% 110%, rgba(31,214,166,.30), transparent 55%),
+      var(--navy);
+    color:#fff;
+    padding:88px 0 96px;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+    background-size:48px 48px;
+    mask-image:radial-gradient(circle at 50% 30%,#000 30%,transparent 75%);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+    color:#cfe6ff;background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.14);
+    padding:7px 14px;border-radius:999px;margin-bottom:24px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--jade);box-shadow:0 0 12px var(--jade)}
+  h1.hero-title{font-size:clamp(34px,5.4vw,60px);font-weight:800;max-width:18ch}
+  h1.hero-title .grad{
+    background:linear-gradient(100deg,var(--jade) 0%,var(--blue-light) 60%,#c4b5fd 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-sub{font-size:clamp(16px,2vw,19px);color:#c8cce0;max-width:60ch;margin-top:22px}
+
+  .badges{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+  .badge{
+    flex:1 1 220px;min-width:200px;
+    display:flex;align-items:center;gap:14px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:14px;padding:16px 18px;
+  }
+  .badge svg{flex-shrink:0;width:30px;height:30px;stroke:var(--jade)}
+  .badge .b-num{font-family:var(--display);font-weight:800;font-size:20px;color:#fff;line-height:1.1}
+  .badge .b-lbl{font-size:13px;color:#aab0c8}
+
+  .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:40px}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:10px;
+    background:linear-gradient(100deg,var(--jade-2),var(--jade));
+    color:#04211a;font-family:var(--display);font-weight:700;font-size:17px;
+    padding:16px 30px;border-radius:12px;text-decoration:none;border:0;cursor:pointer;
+    transition:transform .15s ease,box-shadow .15s ease;
+    box-shadow:0 10px 30px rgba(31,214,166,.30);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(31,214,166,.45)}
+  .btn-primary svg{width:20px;height:20px;stroke:#04211a}
+  .cta-note{font-size:14px;color:#aab0c8;display:flex;align-items:center;gap:7px}
+  .cta-note svg{width:16px;height:16px;stroke:var(--jade)}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:84px 0}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 52px}
+  .sec-kicker{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--violet-2)}
+  .sec-head h2{font-size:clamp(26px,3.6vw,40px);font-weight:800;margin-top:12px;color:var(--ink)}
+  .sec-head p{color:var(--slate);margin-top:14px;font-size:17px}
+
+  /* ---------- PAIN POINTS ---------- */
+  .pain{background:var(--bg-soft)}
+  .pain-list{display:flex;flex-direction:column;gap:14px;max-width:780px;margin:0 auto}
+  .pain-item{
+    display:flex;align-items:center;gap:18px;
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:20px 22px;transition:border-color .15s ease,transform .15s ease;
+  }
+  .pain-item:hover{border-color:var(--violet);transform:translateX(4px)}
+  .pain-ic{
+    flex-shrink:0;width:48px;height:48px;border-radius:12px;
+    display:grid;place-items:center;
+    background:linear-gradient(135deg,rgba(74,0,176,.10),rgba(48,128,255,.10));
+  }
+  .pain-ic svg{width:24px;height:24px;stroke:var(--violet);fill:none}
+  .pain-txt h3{font-size:17px;font-weight:700;color:var(--ink)}
+  .pain-txt p{font-size:14.5px;color:var(--slate-light);margin-top:2px}
+
+  /* ---------- SOLUTIONS ---------- */
+  .sol-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;
+    max-width:980px;margin:0 auto;
+  }
+  .sol-card{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:24px 20px;text-align:center;
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;
+  }
+  .sol-card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(16,24,40,.08);border-color:transparent}
+  .sol-ic{
+    width:52px;height:52px;margin:0 auto 14px;border-radius:14px;
+    display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--violet),var(--blue));
+  }
+  .sol-ic svg{width:26px;height:26px;stroke:#fff;fill:none}
+  .sol-card h3{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+
+  /* ---------- CASE STUDIES ---------- */
+  .cases{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .cases::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(700px 400px at 90% 0%,rgba(48,128,255,.30),transparent 60%),
+      radial-gradient(600px 400px at 0% 100%,rgba(31,214,166,.20),transparent 60%);
+  }
+  .cases .wrap{position:relative}
+  .cases .sec-head h2{color:#fff}
+  .cases .sec-kicker{color:var(--jade)}
+  .cases .sec-head p{color:#b9bfd8}
+  .case-list{display:flex;flex-direction:column;gap:14px;max-width:840px;margin:0 auto}
+  .case-item{
+    display:flex;align-items:center;gap:20px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:16px;padding:22px 24px;
+  }
+  .case-logo{
+    flex-shrink:0;width:54px;height:54px;border-radius:12px;
+    background:linear-gradient(135deg,var(--jade-2),var(--jade));
+    display:grid;place-items:center;color:#04211a;font-family:var(--display);font-weight:800;font-size:18px;
+  }
+  .case-body{flex:1;min-width:0}
+  .case-body h3{font-size:17px;font-weight:700;color:#fff}
+  .case-body p{font-size:14px;color:#aab0c8;margin-top:2px}
+  .case-metric{
+    flex-shrink:0;font-family:var(--display);font-weight:800;font-size:14px;
+    color:var(--jade);background:rgba(31,214,166,.12);
+    border:1px solid rgba(31,214,166,.3);
+    padding:8px 14px;border-radius:999px;white-space:nowrap;
+  }
+
+  /* ---------- FORM / CONVERSION ---------- */
+  .convert{background:var(--bg-soft)}
+  .convert-card{
+    max-width:760px;margin:0 auto;background:#fff;
+    border:1px solid var(--line);border-radius:24px;
+    padding:48px 44px;box-shadow:0 24px 60px rgba(16,24,40,.06);
+  }
+  .convert-card h2{font-size:clamp(24px,3vw,34px);font-weight:800;color:var(--ink)}
+  .convert-card .lead{color:var(--slate);margin-top:10px;font-size:16px}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+  .field{display:flex;flex-direction:column;gap:7px}
+  .field.full{grid-column:1 / -1}
+  .field label{font-size:13px;font-weight:600;color:var(--ink)}
+  .field input,.field textarea,.field select{
+    font-family:var(--body);font-size:15px;color:var(--ink);
+    background:var(--bg-soft);border:1px solid var(--line);border-radius:11px;
+    padding:13px 15px;width:100%;transition:border-color .15s ease,box-shadow .15s ease;
+  }
+  .field input:focus,.field textarea:focus,.field select:focus{
+    outline:none;border-color:var(--violet);box-shadow:0 0 0 3px rgba(74,0,176,.12);background:#fff;
+  }
+  .field textarea{resize:vertical;min-height:104px}
+  .submit{
+    grid-column:1 / -1;
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    background:linear-gradient(100deg,var(--violet),var(--blue));
+    color:#fff;font-family:var(--display);font-weight:700;font-size:17px;
+    padding:17px;border-radius:12px;border:0;cursor:pointer;width:100%;
+    transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .submit:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(74,0,176,.35)}
+  .submit svg{width:20px;height:20px;stroke:#fff}
+  .form-note{text-align:center;font-size:13px;color:var(--slate-light);margin-top:16px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy);color:#aab0c8;padding:40px 0;border-top:1px solid rgba(255,255,255,.08)}
+  .foot-inner{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+  .foot-inner .logo{font-size:18px}
+  footer small{font-size:13px}
+
+  /* ---------- STICKY MOBILE CTA ---------- */
+  .sticky-wa{
+    position:fixed;left:16px;right:16px;bottom:16px;z-index:60;display:none;
+    align-items:center;justify-content:center;gap:10px;
+    background:var(--jade-2);color:#04211a;
+    font-family:var(--display);font-weight:700;font-size:16px;
+    padding:15px;border-radius:14px;text-decoration:none;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+  }
+  .sticky-wa svg{width:20px;height:20px;fill:#04211a}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:720px){
+    .form-grid{grid-template-columns:1fr}
+    .case-item{flex-wrap:wrap}
+    .case-metric{order:3}
+    .nav-cta{display:none}
+    .sticky-wa{display:flex}
+    section{padding:60px 0}
+    .convert-card{padding:34px 22px}
+    body{padding-bottom:80px}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-inner">
+    <span class="logo">PERFECT<b>10</b></span>
+    <a class="nav-cta" href="#wa" data-wa>Konsultasi Gratis</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> AI Automation untuk Bisnis</span>
+    <h1 class="hero-title">AI Automation untuk Meningkatkan <span class="grad">Efisiensi Operasional Bisnis</span></h1>
+    <p class="hero-sub">Kurangi pekerjaan manual, percepat proses operasional, dan bantu tim mengambil keputusan lebih cepat dengan AI yang terintegrasi langsung dengan sistem bisnis Anda.</p>
+
+    <div class="badges">
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div><div class="b-num">Hemat 80+ jam</div><div class="b-lbl">per staf setiap bulan</div></div>
+      </div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 7-7"/><path d="M14 8h6v6"/></svg>
+        <div><div class="b-num">Cut biaya 40%</div><div class="b-lbl">operasional manual</div></div>
+      </div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <div><div class="b-num">Live 30 hari</div><div class="b-lbl">dari kickoff ke produksi</div></div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn-primary" href="#wa" data-wa>
+        Konsultasi Sekarang
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+      </a>
+      <span class="cta-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Gratis, tanpa komitmen
+      </span>
+    </div>
+  </div>
+</header>
+
+<!-- PAIN POINTS -->
+<section class="pain">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Masalah yang Dihadapi</div>
+      <h2>Operasional yang lambat diam-diam menggerus pertumbuhan</h2>
+      <p>Jika tim Anda menghabiskan waktu untuk pekerjaan yang berulang, ini sinyal yang sering muncul.</p>
+    </div>
+    <div class="pain-list">
+      <div class="pain-item">
+        <div class="pain-ic"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-5"/></svg></div>
+        <div class="pain-txt"><h3>Pekerjaan manual yang berulang</h3><p>Input data, rekap, dan follow-up yang memakan jam kerja tim setiap hari.</p></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-ic"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <div class="pain-txt"><h3>Data tersebar di banyak tools</h3><p>Informasi terpecah di spreadsheet, chat, dan aplikasi yang tidak saling terhubung.</p></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-ic"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div class="pain-txt"><h3>Keputusan terlambat diambil</h3><p>Laporan butuh waktu lama disiapkan, sementara peluang lewat begitu saja.</p></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-ic"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.9 4.9l2.8 2.8"/><path d="M16.3 16.3l2.8 2.8"/><path d="M2 12h4"/><path d="M18 12h4"/></svg></div>
+        <div class="pain-txt"><h3>Biaya operasional terus naik</h3><p>Beban kerja bertambah, tapi hasilnya tidak sebanding dengan biaya yang keluar.</p></div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-ic"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <div class="pain-txt"><h3>Tim kewalahan, fokus terpecah</h3><p>Energi terkuras untuk tugas administratif, bukan untuk hal yang benar-benar penting.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Solusi untuk Mereka</div>
+      <h2>AI agent yang bekerja seperti anggota tim Anda</h2>
+      <p>Bukan sekadar chatbot — agent kami mengeksekusi pekerjaan, terhubung ke 500+ tools.</p>
+    </div>
+    <div class="sol-grid">
+      <div class="sol-card"><div class="sol-ic"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Customer Service Automation</h3></div>
+      <div class="sol-card"><div class="sol-ic"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h3>Lead Scoring & Forecasting</h3></div>
+      <div class="sol-card"><div class="sol-ic"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 21V9"/></svg></div><h3>Financial Summarization</h3></div>
+      <div class="sol-card"><div class="sol-ic"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div><h3>Campaign Analysis</h3></div>
+      <div class="sol-card"><div class="sol-ic"><svg viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div><h3>Workflow Automation</h3></div>
+      <div class="sol-card"><div class="sol-ic"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><rect x="5" y="9" width="14" height="11" rx="2"/></svg></div><h3>Knowledge Base AI</h3></div>
+      <div class="sol-card"><div class="sol-ic"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M4 4h16v12H4z"/><path d="M2 20h20"/></svg></div><h3>Custom Agent Integration</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="cases">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Studi Kasus</div>
+      <h2>Hasil nyata dari klien yang sudah berjalan</h2>
+      <p>Dampak yang terukur, bukan sekadar janji.</p>
+    </div>
+    <div class="case-list">
+      <div class="case-item">
+        <div class="case-logo">A</div>
+        <div class="case-body"><h3>Otomasi layanan pelanggan</h3><p>Respon tiket masuk ditangani agent 24/7 tanpa antrian.</p></div>
+        <div class="case-metric">Cut time 30%</div>
+      </div>
+      <div class="case-item">
+        <div class="case-logo">B</div>
+        <div class="case-body"><h3>Rekap & laporan keuangan</h3><p>Laporan bulanan yang dulu manual kini selesai otomatis.</p></div>
+        <div class="case-metric">Cut budget 40%</div>
+      </div>
+      <div class="case-item">
+        <div class="case-logo">C</div>
+        <div class="case-body"><h3>Manajemen alur kerja tim</h3><p>Tugas terdistribusi rapi, tidak ada lagi yang terlewat.</p></div>
+        <div class="case-metric">Workload rapih</div>
+      </div>
+      <div class="case-item">
+        <div class="case-logo">D</div>
+        <div class="case-body"><h3>Penilaian & prioritas leads</h3><p>Sales fokus ke prospek dengan peluang tutup tertinggi.</p></div>
+        <div class="case-metric">Cut budget 40%</div>
+      </div>
+      <div class="case-item">
+        <div class="case-logo">E</div>
+        <div class="case-body"><h3>Integrasi data lintas tools</h3><p>Satu sumber kebenaran untuk seluruh keputusan tim.</p></div>
+        <div class="case-metric">Workload rapih</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONVERSION / FORM -->
+<section class="convert" id="wa">
+  <div class="wrap">
+    <div class="convert-card">
+      <h2>Jadwalkan konsultasi gratis</h2>
+      <p class="lead">Isi form di bawah ini. Tim kami akan menghubungi Anda via WhatsApp untuk membahas peluang otomasi di bisnis Anda.</p>
+      <div class="form-grid">
+        <div class="field"><label for="nama">Nama</label><input id="nama" type="text" placeholder="Nama lengkap"></div>
+        <div class="field"><label for="wa">Nomor WhatsApp</label><input id="waNum" type="tel" placeholder="08xx xxxx xxxx"></div>
+        <div class="field full"><label for="perusahaan">Nama perusahaan</label><input id="perusahaan" type="text" placeholder="PT / CV / nama usaha"></div>
+        <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="email@perusahaan.com"></div>
+        <div class="field"><label for="bidang">Bidang usaha</label><input id="bidang" type="text" placeholder="mis. retail, jasa, manufaktur"></div>
+        <div class="field full"><label for="pesan">Tantangan operasional yang ingin diselesaikan</label><textarea id="pesan" placeholder="Ceritakan singkat proses yang ingin diotomasi..."></textarea></div>
+        <button class="submit" type="button" data-wa>
+          Konsultasi Sekarang
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <p class="form-note">Tombol ini akan membuka WhatsApp dengan pesan otomatis berisi data yang Anda isi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-inner">
+    <span class="logo">PERFECT<b>10</b></span>
+    <small>&copy; 2026 Perfect10 AI · PT. Venturium Magna Asia · Jakarta Selatan</small>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<a class="sticky-wa" href="#wa" data-wa>
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.4A10 10 0 1 0 12 2zm5.3 14c-.2.6-1.2 1.1-1.7 1.1-.4 0-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.6-.1l2 .9c.2.1.4.2.4.3.1.1.1.7-.1 1.3z"/></svg>
+  Konsultasi Gratis via WhatsApp
+</a>
+
+<script>
+  // ====== KONFIGURASI ======
+  // Ganti nomor WA tim (format internasional tanpa + atau 0 di depan)
+  var WA_NUMBER = '6281234567890'; // <-- GANTI nomor WA P10
+  // =========================
+
+  function buildMessage(){
+    var nama=(document.getElementById('nama')||{}).value||'';
+    var waNum=(document.getElementById('waNum')||{}).value||'';
+    var perusahaan=(document.getElementById('perusahaan')||{}).value||'';
+    var email=(document.getElementById('email')||{}).value||'';
+    var bidang=(document.getElementById('bidang')||{}).value||'';
+    var pesan=(document.getElementById('pesan')||{}).value||'';
+    var txt='Halo Perfect10, saya ingin konsultasi gratis tentang AI automation.';
+    if(nama)txt+='\n\nNama: '+nama;
+    if(perusahaan)txt+='\nPerusahaan: '+perusahaan;
+    if(waNum)txt+='\nWhatsApp: '+waNum;
+    if(email)txt+='\nEmail: '+email;
+    if(bidang)txt+='\nBidang usaha: '+bidang;
+    if(pesan)txt+='\nTantangan: '+pesan;
+    return txt;
+  }
+  function openWA(){
+    var url='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(buildMessage());
+    // Meta Pixel event placeholder:
+    if(typeof fbq==='function'){fbq('track','Lead');}
+    window.open(url,'_blank');
+  }
+  document.querySelectorAll('[data-wa]').forEach(function(el){
+    el.addEventListener('click',function(e){
+      // kalau bukan tombol form (anchor #wa di nav), scroll dulu ke form
+      if(el.tagName==='A' && el.getAttribute('href')==='#wa'){
+        // biarkan scroll default, tetap buka WA juga
+      }
+      e.preventDefault();
+      // anchor nav/hero -> scroll ke form supaya user bisa isi dulu
+      if(el.classList.contains('nav-cta')||el.classList.contains('btn-primary')||el.classList.contains('sticky-wa')){
+        document.getElementById('wa').scrollIntoView({behavior:'smooth'});
+        return;
+      }
+      openWA();
+    });
+  });
+</script>
+</body>
+</html>

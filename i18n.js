@@ -1,21 +1,23 @@
 /* =========================================================================
    consul.perfect10.id — bilingual (ID / EN)
    Default = ID. Choice persists in localStorage. No-JS users see ID.
+   Positioning: AI CONSULTANT (advise + implement) — not product selling.
    To edit copy: change the strings below (id + en) per key.
    ========================================================================= */
 
 const I18N = {
   id: {
-    "meta.title": "Perfect10 — AI Automation untuk Efisiensi Operasional Bisnis",
-    "meta.desc": "Kami bangun & integrasikan AI langsung ke alur kerja bisnis Anda. Pangkas pekerjaan manual, percepat operasional, dan ambil keputusan lebih cepat. Konsultasi gratis via WhatsApp.",
+    "meta.title": "Perfect10 — Konsultan AI untuk Efisiensi Operasional Bisnis",
+    "meta.desc": "Perfect10 adalah konsultan AI. Kami bantu petakan, rancang, dan terapkan automation paling berdampak untuk bisnis Anda. Konsultasi gratis via WhatsApp.",
     "skip": "Lewati ke form konsultasi",
 
-    "nav.solusi": "Solusi", "nav.bukti": "Bukti", "nav.konsultasi": "Konsultasi",
+    "nav.solusi": "Yang Kami Bantu", "nav.bukti": "Bukti", "nav.faq": "FAQ", "nav.konsultasi": "Konsultasi",
     "cta.header": "Konsultasi Gratis",
 
-    "hero.pill": "Dibangun untuk operasional Anda",
+    "hero.tag": "AI Consultant",
+    "hero.pill": "Pendamping AI untuk bisnis Anda",
     "hero.h1": "Ubah pekerjaan manual jadi <span class=\"grad-text\">sistem yang jalan sendiri</span>",
-    "hero.lead": "Kami rancang, bangun, dan integrasikan AI langsung ke alur kerja bisnis Anda — bukan tools terpisah yang menambah pekerjaan. Tim fokus ke hal penting, sisanya berjalan otomatis.",
+    "hero.lead": "Sebagai konsultan AI, kami dampingi dari analisa kebutuhan sampai implementasi — memetakan proses mana yang paling layak diotomatiskan, lalu membangunnya bersama tim Anda.",
     "hero.cta1": "Konsultasi Gratis via WhatsApp",
     "hero.cta2": "Lihat Bukti & Use Case",
     "hero.note": "Gratis, tanpa komitmen — langsung ngobrol via WhatsApp",
@@ -27,9 +29,10 @@ const I18N = {
     "dash.k4": "Biaya proses", "dash.k4s": "▲ margin naik",
     "dash.chart": "Output tim / minggu",
 
-    "sol.eyebrow": "Solusi Perfect10",
-    "sol.h2": "Satu sistem AI, semua proses jadi otomatis",
-    "sol.lead": "Kami tidak menjual tools tambahan. Kami bangun AI yang menyatu dengan cara kerja Anda — bekerja seperti anggota tim terbaik yang tidak pernah lelah.",
+    "sol.eyebrow": "Yang Kami Bantu",
+    "sol.h2": "Kami petakan & terapkan AI yang tepat sasaran",
+    "sol.lead": "Kami bukan penjual tools. Sebagai konsultan, kami bantu Anda memilih dan menerapkan automation yang benar-benar berdampak di area berikut.",
+    "sol.hint": "Geser untuk lihat semua →",
     "sol.c1t": "Customer Service Automation",
     "sol.c1d": "AI agent membalas chat & pertanyaan customer 24/7 dengan konteks bisnis Anda — eskalasi ke tim hanya saat benar-benar perlu.",
     "sol.c2t": "Sales & Lead Automation",
@@ -49,7 +52,6 @@ const I18N = {
     "bukti.sub1": "Bersama klien kami",
     "bukti.ph1": "Foto meeting / onboarding klien",
     "bukti.ph2": "Foto sesi konsultasi / workshop",
-    "bukti.ph3": "Foto tim / serah terima hasil",
     "bukti.sub2": "Apa kata klien",
     "bukti.q1": "\"[ Kutipan testimoni klien — mis. klien multinasional. Tuliskan hasil konkret yang mereka rasakan. ]\"",
     "bukti.q2": "\"[ Kutipan testimoni klien — fokus ke dampak: hemat waktu / biaya / kapasitas. ]\"",
@@ -60,6 +62,7 @@ const I18N = {
     "bukti.uct": "[ Judul use case ]",
     "bukti.ucp": "[ Ringkas: masalah klien → solusi automation → hasil terukur. ]",
     "bukti.ucm": "[ Hasil ]",
+    "bukti.hint": "Geser →",
 
     "cta.eyebrow": "Konsultasi Gratis",
     "cta.h2": "Cari tahu apa yang bisa <span class=\"grad-text\">diotomatiskan</span>",
@@ -85,26 +88,33 @@ const I18N = {
     "form.submit": "Konsultasi via WhatsApp",
     "form.foot": "Tombol ini langsung membuka WhatsApp dengan pesan terisi — Anda tinggal kirim.",
 
-    "footer.desc": "AI Automation yang menyatu dengan alur kerja Anda — memangkas pekerjaan manual dan meningkatkan efisiensi operasional bisnis.",
-    "footer.wa": "Chat WhatsApp",
-    "footer.h1": "Halaman", "footer.bukti": "Bukti & Use Case", "footer.h2": "Kontak",
+    "faq.eyebrow": "FAQ",
+    "faq.h2": "Pertanyaan yang sering muncul",
+    "faq.q1": "Perfect10 itu agensi/konsultan atau jual produk?",
+    "faq.a1": "Kami konsultan AI. Kami bantu analisa kebutuhan, rancang, dan terapkan automation yang paling berdampak — bukan menjual satu produk jadi.",
+    "faq.q2": "Tim kami tidak paham teknis, apa bisa?",
+    "faq.a2": "Bisa. Anda cukup paham bisnis Anda; sisi teknis sepenuhnya kami yang tangani, dari rancang sampai jalan.",
+    "faq.q3": "Mulai dari mana?",
+    "faq.a3": "Dari konsultasi gratis via WhatsApp. Kami petakan kebutuhan Anda dan beri rekomendasi sebelum komit apa pun.",
+    "faq.q4": "Berapa biayanya?",
+    "faq.a4": "Menyesuaikan ruang lingkup dan dampak yang ingin dicapai. Mulai dari konsultasi gratis, lalu estimasi yang transparan.",
 
-    "sticky.t": "Konsultasi gratis",
-    "sticky.s": "Audit operasional Anda — tanpa biaya",
-    "sticky.b": "Mulai",
+    "footer.mini": "Konsultan AI · Automation untuk efisiensi operasional bisnis.",
+    "footer.wa": "Chat WhatsApp",
   },
 
   en: {
-    "meta.title": "Perfect10 — AI Automation for Operational Efficiency",
-    "meta.desc": "We build & integrate AI directly into your business workflows. Cut manual work, speed up operations, and make faster decisions. Free consultation via WhatsApp.",
+    "meta.title": "Perfect10 — AI Consultant for Operational Efficiency",
+    "meta.desc": "Perfect10 is an AI consultancy. We help you map, design, and implement the automation that matters most for your business. Free consultation via WhatsApp.",
     "skip": "Skip to consultation form",
 
-    "nav.solusi": "Solutions", "nav.bukti": "Proof", "nav.konsultasi": "Consultation",
+    "nav.solusi": "How We Help", "nav.bukti": "Proof", "nav.faq": "FAQ", "nav.konsultasi": "Consultation",
     "cta.header": "Free Consultation",
 
-    "hero.pill": "Built for your operations",
+    "hero.tag": "AI Consultant",
+    "hero.pill": "Your AI partner for business",
     "hero.h1": "Turn manual work into <span class=\"grad-text\">a system that runs itself</span>",
-    "hero.lead": "We design, build, and integrate AI directly into your business workflows — not yet another tool that adds work. Your team focuses on what matters; the rest runs automatically.",
+    "hero.lead": "As your AI consultant, we guide you from needs analysis to implementation — mapping which processes are worth automating, then building them together with your team.",
     "hero.cta1": "Free Consultation via WhatsApp",
     "hero.cta2": "See Proof & Use Cases",
     "hero.note": "Free, no commitment — chat directly via WhatsApp",
@@ -116,9 +126,10 @@ const I18N = {
     "dash.k4": "Process cost", "dash.k4s": "▲ margin up",
     "dash.chart": "Team output / week",
 
-    "sol.eyebrow": "Perfect10 Solutions",
-    "sol.h2": "One AI system, every process automated",
-    "sol.lead": "We don't sell extra tools. We build AI that blends into how you already work — like your best team member who never gets tired.",
+    "sol.eyebrow": "How We Help",
+    "sol.h2": "We map & apply the right AI for you",
+    "sol.lead": "We don't sell tools. As consultants, we help you choose and implement automation that truly moves the needle across these areas.",
+    "sol.hint": "Swipe to see all →",
     "sol.c1t": "Customer Service Automation",
     "sol.c1d": "An AI agent answers chats & customer questions 24/7 with your business context — escalating to your team only when truly needed.",
     "sol.c2t": "Sales & Lead Automation",
@@ -138,7 +149,6 @@ const I18N = {
     "bukti.sub1": "With our clients",
     "bukti.ph1": "Client meeting / onboarding photo",
     "bukti.ph2": "Consultation / workshop photo",
-    "bukti.ph3": "Team / project handover photo",
     "bukti.sub2": "What clients say",
     "bukti.q1": "\"[ Client testimonial — e.g. a multinational client. State the concrete results they experienced. ]\"",
     "bukti.q2": "\"[ Client testimonial — focus on impact: time / cost / capacity saved. ]\"",
@@ -149,6 +159,7 @@ const I18N = {
     "bukti.uct": "[ Use case title ]",
     "bukti.ucp": "[ Brief: client problem → automation solution → measurable result. ]",
     "bukti.ucm": "[ Result ]",
+    "bukti.hint": "Swipe →",
 
     "cta.eyebrow": "Free Consultation",
     "cta.h2": "Find out what can be <span class=\"grad-text\">automated</span>",
@@ -174,13 +185,19 @@ const I18N = {
     "form.submit": "Consult via WhatsApp",
     "form.foot": "This button opens WhatsApp with a pre-filled message — you just hit send.",
 
-    "footer.desc": "AI Automation that blends into your workflows — cutting manual work and boosting your business's operational efficiency.",
-    "footer.wa": "Chat on WhatsApp",
-    "footer.h1": "Pages", "footer.bukti": "Proof & Use Cases", "footer.h2": "Contact",
+    "faq.eyebrow": "FAQ",
+    "faq.h2": "Frequently asked questions",
+    "faq.q1": "Is Perfect10 a consultancy or a product?",
+    "faq.a1": "We're an AI consultancy. We help analyze needs, design, and implement the automation that matters most — not sell a one-size product.",
+    "faq.q2": "Our team isn't technical — can we still do this?",
+    "faq.a2": "Yes. You just need to know your business; we handle the entire technical side, from design to launch.",
+    "faq.q3": "How do we start?",
+    "faq.a3": "With a free WhatsApp consultation. We map your needs and give recommendations before any commitment.",
+    "faq.q4": "How much does it cost?",
+    "faq.a4": "It depends on scope and the impact you're after. We start with a free consultation, then a transparent estimate.",
 
-    "sticky.t": "Free consultation",
-    "sticky.s": "Audit your operations — at no cost",
-    "sticky.b": "Start",
+    "footer.mini": "AI Consultant · Automation for operational efficiency.",
+    "footer.wa": "Chat on WhatsApp",
   },
 };
 
@@ -191,8 +208,7 @@ function getLang() {
     const saved = localStorage.getItem(I18N_KEY);
     if (saved === "id" || saved === "en") return saved;
   } catch (e) {}
-  const nav = (navigator.language || "id").toLowerCase();
-  return nav.startsWith("en") ? "en" : "id";
+  return "id"; // default ID per client
 }
 
 function applyLang(lang) {

@@ -1,0 +1,6 @@
+# internal tooling / local
+.kanban.json
+.DS_Store
+*.log
+.vscode/
+.idea/

@@ -101,7 +101,7 @@ function initStickyCta() {
   window.addEventListener("resize", update, { passive: true });
 }
 
-/* ---- sliders: arrow buttons + drag-to-scroll, snap, no visible scrollbar ---- */
+/* ---- sliders: modern carousel — fades, dots, flick momentum, arrows, keys ---- */
 function initSliders() {
   const ARROW = {
     prev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>',
@@ -109,7 +109,10 @@ function initSliders() {
   };
 
   document.querySelectorAll(".slider").forEach((slider) => {
-    // wrap so arrows can be positioned over the slider
+    const slides = Array.from(slider.querySelectorAll(".slide"));
+    if (!slides.length) return;
+
+    // wrap so arrows/fades can sit over the slider
     const wrap = document.createElement("div");
     wrap.className = "slider-wrap";
     slider.parentNode.insertBefore(wrap, slider);
@@ -128,41 +131,92 @@ function initSliders() {
     wrap.appendChild(prev);
     wrap.appendChild(next);
 
-    const step = () => {
-      const card = slider.querySelector(".slide");
-      const gap = 16;
-      return card ? card.getBoundingClientRect().width + gap : slider.clientWidth * 0.8;
-    };
-    prev.addEventListener("click", () => slider.scrollBy({ left: -step(), behavior: "smooth" }));
-    next.addEventListener("click", () => slider.scrollBy({ left: step(), behavior: "smooth" }));
+    // page-based dots (every page is reachable, active is always correct)
+    const dotsWrap = document.createElement("div");
+    dotsWrap.className = "slider-dots";
+    wrap.after(dotsWrap);
 
+    let dots = [], pageCount = 0;
+    const pages = () =>
+      Math.max(1, Math.ceil((slider.scrollWidth - slider.clientWidth - 2) / slider.clientWidth) + 1);
+    const curPage = () =>
+      Math.max(0, Math.min(pages() - 1, Math.round(slider.scrollLeft / slider.clientWidth)));
+    const goPage = (i) => {
+      const pc = pages();
+      i = Math.max(0, Math.min(pc - 1, i));
+      slider.scrollTo({ left: i * slider.clientWidth, behavior: "smooth" });
+    };
+    const buildDots = () => {
+      const pc = pages();
+      if (pc === pageCount) return;
+      pageCount = pc;
+      dotsWrap.innerHTML = "";
+      dots = [];
+      for (let i = 0; i < pc; i++) {
+        const d = document.createElement("button");
+        d.type = "button";
+        d.className = "slider-dot";
+        d.setAttribute("aria-label", "Halaman " + (i + 1));
+        d.addEventListener("click", () => goPage(i));
+        dotsWrap.appendChild(d);
+        dots.push(d);
+      }
+    };
+
+    prev.addEventListener("click", () => goPage(curPage() - 1));
+    next.addEventListener("click", () => goPage(curPage() + 1));
+
+    let raf = 0;
     const update = () => {
       const max = slider.scrollWidth - slider.clientWidth - 2;
-      prev.classList.toggle("is-hidden", slider.scrollLeft <= 2);
-      next.classList.toggle("is-hidden", slider.scrollLeft >= max);
+      const atStart = slider.scrollLeft <= 2;
+      const atEnd = slider.scrollLeft >= max;
+      prev.classList.toggle("is-hidden", atStart);
+      next.classList.toggle("is-hidden", atEnd);
+      slider.style.setProperty("--fl", atStart ? "0px" : "36px");
+      slider.style.setProperty("--fr", atEnd ? "0px" : "36px");
+      const cp = curPage();
+      dots.forEach((d, i) => d.classList.toggle("is-active", i === cp));
     };
-    update();
-    slider.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update, { passive: true });
+    const onScroll = () => { if (raf) return; raf = requestAnimationFrame(() => { raf = 0; update(); }); };
+    buildDots(); update();
+    slider.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", () => { buildDots(); update(); }, { passive: true });
 
-    // drag-to-scroll (mouse / trackpad)
-    let down = false, startX = 0, startLeft = 0, moved = false;
+    // drag with flick momentum, snap to nearest page on release
+    let down = false, startX = 0, startLeft = 0, moved = false, lastX = 0, lastT = 0, vx = 0;
     slider.addEventListener("pointerdown", (e) => {
       if (e.pointerType !== "mouse") return;
-      down = true; moved = false; startX = e.clientX; startLeft = slider.scrollLeft;
+      down = true; moved = false; startX = lastX = e.clientX; startLeft = slider.scrollLeft;
+      lastT = performance.now(); vx = 0;
       slider.classList.add("dragging");
+      try { slider.setPointerCapture(e.pointerId); } catch (_) {}
     });
-    window.addEventListener("pointermove", (e) => {
+    slider.addEventListener("pointermove", (e) => {
       if (!down) return;
       const dx = e.clientX - startX;
       if (Math.abs(dx) > 4) moved = true;
       slider.scrollLeft = startLeft - dx;
+      const now = performance.now(), dt = now - lastT;
+      if (dt > 0) vx = (e.clientX - lastX) / dt;
+      lastX = e.clientX; lastT = now;
     });
-    window.addEventListener("pointerup", () => {
+    const endDrag = () => {
+      if (!down) return;
       down = false;
       slider.classList.remove("dragging");
-    });
-    // prevent click after a drag
+      const projected = slider.scrollLeft - vx * 160; // flick projection
+      goPage(Math.round(projected / slider.clientWidth));
+    };
+    slider.addEventListener("pointerup", endDrag);
+    slider.addEventListener("pointercancel", endDrag);
     slider.addEventListener("click", (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+    // keyboard (when slider focused)
+    if (!slider.hasAttribute("tabindex")) slider.setAttribute("tabindex", "0");
+    slider.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { e.preventDefault(); goPage(curPage() + 1); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); goPage(curPage() - 1); }
+    });
   });
 }

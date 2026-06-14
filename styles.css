@@ -891,3 +891,6 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.012em; }
 .section--dark .slider-dot { background: rgba(255,255,255,.25); }
 .section--dark .slider-dot:hover { background: rgba(255,255,255,.45); }
 .section--dark .slider-dot.is-active { background: #fff; }
+
+/* center slider content when it fits; left-align + scroll when it overflows */
+.slider { justify-content: safe center; }

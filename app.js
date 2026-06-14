@@ -161,6 +161,7 @@ function initSliders() {
         dotsWrap.appendChild(d);
         dots.push(d);
       }
+      dotsWrap.style.display = pc <= 1 ? "none" : ""; // no lone dot when nothing to page
     };
 
     prev.addEventListener("click", () => goPage(curPage() - 1));

@@ -965,13 +965,6 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.012em; }
   padding: 5px 10px; border-radius: 8px; box-shadow: var(--shadow-soft);
 }
 
-/* draft disclaimer */
-.bukti-draft {
-  font-size: 12.5px; color: var(--muted); font-style: italic;
-  margin: 0 0 14px; padding: 8px 12px;
-  background: rgba(124,58,237,.05); border-left: 3px solid rgba(124,58,237,.4);
-  border-radius: 6px;
-}
 
 @media (max-width: 600px) {
   .hero-badge { right: 8px; top: 10px; padding: 9px 12px; }

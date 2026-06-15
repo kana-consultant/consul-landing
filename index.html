@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=12" />
+  <link rel="stylesheet" href="styles.css?v=13" />
 
   <!-- ============================================================
        META PIXEL  —  TODO: paste Pixel ID here (mas Adit)
@@ -97,11 +97,12 @@
     <div class="container">
       <p class="lbl" data-i18n="trust.lbl">Dipercaya lintas industri & lintas negara</p>
       <div class="logo-row">
-        <span class="brandmark">Atveti</span>
-        <span class="brandmark">URAI</span>
+        <img class="cl-logo" src="assets/logos/atveti.png" alt="Atveti" loading="lazy" />
+        <img class="cl-logo" src="assets/logos/urai.svg" alt="URAI" loading="lazy" />
         <span class="brandmark">Vantage</span>
-        <span class="brandmark">Strata52</span>
-        <span class="brandmark">Torchstone</span>
+        <span class="brandmark">KUNCI</span>
+        <img class="cl-logo" src="assets/logos/strata52.png" alt="Strata52" loading="lazy" />
+        <img class="cl-logo" src="assets/logos/torchstone.png" alt="Torchstone" loading="lazy" />
       </div>
       <p class="trust-geo" data-i18n-html="trust.geo">Termasuk 2 kementerian RI · <span class="geo-flags">🇺🇸 🇦🇺 🇩🇪 🇸🇬 🇮🇩</span></p>
     </div>
@@ -173,48 +174,39 @@
         <figure class="slide photo"><img src="assets/klien-meet.jpg" alt="Pendampingan dan review online lintas tim" loading="lazy" decoding="async" /><figcaption data-i18n="bukti.ph3">Pendampingan & review online lintas tim</figcaption></figure>
       </div>
 
-      <!-- 3b. Testimoni klien (slider) -->
-      <div class="bukti-head"><h3 class="bukti-sub" data-i18n="bukti.sub2">Apa kata klien</h3><span class="slider-hint" data-i18n="bukti.hint">Geser →</span></div>
-      <div class="slider" tabindex="0" aria-label="Testimoni klien">
-        <figure class="slide tcard">
-          <blockquote data-i18n="bukti.q1">"Proses rekap dan pelaporan yang dulu makan waktu berhari-hari sekarang jauh lebih ringkas. Tim bisa fokus ke hal yang lebih penting."</blockquote>
-          <figcaption><span class="t-ava" aria-hidden="true"></span><span><b data-i18n="bukti.q1n">Pengurus ATVETI</b><small data-i18n="bukti.q1r">Asosiasi Pendidikan Vokasi</small></span></figcaption>
-        </figure>
-        <figure class="slide tcard">
-          <blockquote data-i18n="bukti.q2">"Follow-up yang tadinya sering terlewat kini jalan otomatis. Respon ke pihak luar jadi jauh lebih cepat dan rapi."</blockquote>
-          <figcaption><span class="t-ava" aria-hidden="true"></span><span><b data-i18n="bukti.q2n">Tim Operasional URAI</b><small data-i18n="bukti.q2r">Layanan & Operasional</small></span></figcaption>
-        </figure>
-        <figure class="slide tcard">
-          <blockquote data-i18n="bukti.q3">"Pendampingannya praktis — bukan jualan tools, tapi benar-benar bantu sampai sistemnya jalan dipakai sehari-hari."</blockquote>
-          <figcaption><span class="t-ava" aria-hidden="true"></span><span><b data-i18n="bukti.q3n">Operations Lead</b><small data-i18n="bukti.q3r">Strata52 · Amerika Serikat</small></span></figcaption>
-        </figure>
-      </div>
-
       <!-- 3c. Use case per klien (slider) -->
       <div class="bukti-head"><h3 class="bukti-sub" data-i18n="bukti.sub3">Use case &amp; hasil per klien</h3><span class="slider-hint" data-i18n="bukti.hint">Geser →</span></div>
       <div class="slider" tabindex="0" aria-label="Use case">
         <article class="slide uc">
-          <figure class="uc-img"><img src="assets/uc-atveti.jpg" alt="Dashboard produk Atveti" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc1ind">Exam Prep / Pendidikan</span></figure>
+          <figure class="uc-img"><img src="assets/uc-atveti.jpg" alt="Dashboard produk Atveti" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc1ind">Atveti</span></figure>
           <div class="uc-body">
-            <h4 data-i18n="bukti.uc1t">Atveti</h4>
-            <p data-i18n="bukti.uc1p">Menilai Writing & Speaking IELTS/PTE secara konsisten sulit diskalakan. Kami bangun scoring AI berbasis rubrik resmi + feedback otomatis — hasil cepat dan terkalibrasi.</p>
-            <span class="uc-metric grad-text" data-i18n="bukti.uc1m">Feedback < 60 detik</span>
+            <h4 data-i18n="bukti.uc1t">Penilaian latihan instan, setara standar penguji</h4>
+            <p data-i18n="bukti.uc1p">Masalah: penilaian Writing & Speaking IELTS/PTE manual — lambat, subjektif, siswa nunggu berhari-hari. Solusi kami: scoring AI berbasis rubrik resmi + feedback otomatis.</p>
+            <span class="uc-metric grad-text" data-i18n="bukti.uc1m">Feedback: berhari-hari → < 60 detik</span>
           </div>
         </article>
         <article class="slide uc">
-          <figure class="uc-img"><img src="assets/uc-urai.jpg" alt="Dashboard produk URAI" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc2ind">HR / Talent Assessment</span></figure>
+          <figure class="uc-img"><img src="assets/uc-urai.jpg" alt="Dashboard produk URAI" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc2ind">URAI</span></figure>
           <div class="uc-body">
-            <h4 data-i18n="bukti.uc2t">URAI</h4>
-            <p data-i18n="bukti.uc2p">Asesmen talenta manual lambat dan subjektif. Kami susun platform asesmen psikometri tervalidasi + narasi rekomendasi otomatis untuk keputusan hiring.</p>
-            <span class="uc-metric grad-text" data-i18n="bukti.uc2m">Rekomendasi otomatis</span>
+            <h4 data-i18n="bukti.uc2t">Keputusan hiring berbasis bukti, bukan tebakan</h4>
+            <p data-i18n="bukti.uc2p">Masalah: asesmen talenta manual, subjektif, dan lama diinterpretasi. Solusi kami: platform psikometri tervalidasi + narasi rekomendasi otomatis yang siap dipakai HR.</p>
+            <span class="uc-metric grad-text" data-i18n="bukti.uc2m">Asesmen: subjektif → terukur & terstandar</span>
           </div>
         </article>
         <article class="slide uc">
-          <figure class="uc-img"><img src="assets/uc-vantage.jpg" alt="Konsol intake AI Vantage" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc4ind">Healthcare / Mental Health</span></figure>
+          <figure class="uc-img"><img src="assets/uc-vantage.jpg" alt="Konsol intake AI Vantage" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc4ind">Vantage</span></figure>
           <div class="uc-body">
-            <h4 data-i18n="bukti.uc4t">Vantage</h4>
-            <p data-i18n="bukti.uc4p">Intake pasien menumpuk dan butuh respon cepat namun aman. AI intake assistant menjawab 24/7 dengan eskalasi krisis langsung ke staf.</p>
-            <span class="uc-metric grad-text" data-i18n="bukti.uc4m">Intake 24/7, aman</span>
+            <h4 data-i18n="bukti.uc4t">Intake pasien 24/7 dengan eskalasi krisis yang aman</h4>
+            <p data-i18n="bukti.uc4p">Masalah: antrean intake menumpuk, butuh respon cepat tapi aman. Solusi kami: AI intake assistant 24/7 yang menandai sinyal krisis dan eskalasi langsung ke staf.</p>
+            <span class="uc-metric grad-text" data-i18n="bukti.uc4m">Intake: jam kerja → 24/7 otomatis</span>
+          </div>
+        </article>
+        <article class="slide uc">
+          <figure class="uc-img"><img src="assets/uc-kunci.jpg" alt="Dashboard AI SDR KUNCI" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc5ind">KUNCI</span></figure>
+          <div class="uc-body">
+            <h4 data-i18n="bukti.uc5t">Pipeline outbound yang menjalankan dirinya sendiri</h4>
+            <p data-i18n="bukti.uc5p">Masalah: tim sales boros jam buat riset prospek & tulis cold email. Solusi kami: AI SDR otonom — capture lead, riset website, profilkan, kirim 3 email personal, balas otomatis saat prospek merespons.</p>
+            <span class="uc-metric grad-text" data-i18n="bukti.uc5m">Outbound: manual → autopilot penuh</span>
           </div>
         </article>
       </div>
@@ -326,7 +318,7 @@
     <a href="#konsultasi" class="btn btn--accent js-cta" data-src="sticky" data-i18n="sticky.b">Mulai</a>
   </div>
 
-  <script defer src="i18n.js?v=5"></script>
+  <script defer src="i18n.js?v=6"></script>
   <script defer src="app.js?v=11"></script>
 </body>
 </html>

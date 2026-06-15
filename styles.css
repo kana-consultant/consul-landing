@@ -938,6 +938,11 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.012em; }
 }
 .trustbar .brandmark { cursor: default; }
 .trustbar .geo-flags { font-size: 19px; letter-spacing: 3px; vertical-align: middle; }
+.logo-row .cl-logo {
+  height: 30px; width: auto; max-width: 140px; object-fit: contain;
+  filter: grayscale(1); opacity: .6; transition: filter .2s, opacity .2s;
+}
+.logo-row .cl-logo:hover { filter: none; opacity: 1; }
 
 /* ---- real client photos in slider ---- */
 .slide.photo {

@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=10" />
+  <link rel="stylesheet" href="styles.css?v=11" />
 
   <!-- ============================================================
        META PIXEL  —  TODO: paste Pixel ID here (mas Adit)
@@ -47,7 +47,7 @@
   <!-- ===================== HEADER ===================== -->
   <header class="header" id="site-header">
     <div class="container">
-      <a href="#top" class="logo" aria-label="Perfect10"><span class="p">PERFECT</span><span class="n">10</span><span class="tm">™</span></a>
+      <a href="#top" class="logo logo--img" aria-label="Perfect10"><img src="assets/logo.webp" alt="Perfect10" width="384" height="131" /></a>
       <nav class="nav" aria-label="Navigasi utama">
         <a href="#solusi" data-i18n="nav.solusi">Yang Kami Bantu</a>
         <a href="#bukti" data-i18n="nav.bukti">Bukti</a>
@@ -73,7 +73,7 @@
     <span class="glow glow-1" aria-hidden="true"></span>
     <span class="glow glow-2" aria-hidden="true"></span>
     <div class="container">
-      <div class="hero-grid">
+      <div class="hero-grid is-center">
         <div class="hero-copy">
           <h1 data-i18n-html="hero.h1">AI Automation untuk Meningkatkan <span class="grad-text">Efisiensi Operasional Bisnis</span> Kamu</h1>
           <p class="lead" data-i18n="hero.lead">Sebagai konsultan AI, kami dampingi dari analisa kebutuhan sampai implementasi — memetakan proses mana yang paling layak diotomatiskan, lalu membangunnya bersama tim Anda.</p>
@@ -88,13 +88,6 @@
 
           <p class="hero-note"><span class="dot"></span> <span data-i18n="hero.note">Gratis, tanpa komitmen — langsung ngobrol via WhatsApp</span></p>
         </div>
-
-        <!-- foto nyata pendampingan klien (bukan mockup) -->
-        <div class="hero-visual">
-          <figure class="hero-photo">
-            <img src="assets/klien-meeting.jpg" alt="Tim Perfect10 mendampingi klien dalam sesi konsultasi" width="1280" height="720" loading="eager" decoding="async" fetchpriority="high" />
-          </figure>
-        </div>
       </div>
     </div>
   </section>
@@ -104,14 +97,13 @@
     <div class="container">
       <p class="lbl" data-i18n="trust.lbl">Dipercaya lintas industri & lintas negara</p>
       <div class="logo-row">
-        <span class="brandmark">ATVETI</span>
+        <span class="brandmark">Atveti</span>
         <span class="brandmark">URAI</span>
-        <span class="brandmark">Allogio</span>
         <span class="brandmark">Vantage</span>
         <span class="brandmark">Strata52</span>
         <span class="brandmark">Torchstone</span>
       </div>
-      <p class="trust-geo" data-i18n="trust.geo">Termasuk 2 kementerian RI · klien di 🇺🇸 AS · 🇦🇺 Australia · 🇩🇪 Jerman · 🇸🇬 Singapura · 🇮🇩 Indonesia</p>
+      <p class="trust-geo" data-i18n-html="trust.geo">Termasuk 2 kementerian RI · <span class="geo-flags">🇺🇸 🇦🇺 🇩🇪 🇸🇬 🇮🇩</span></p>
     </div>
   </section>
 
@@ -203,35 +195,27 @@
       <p class="bukti-draft" data-i18n="bukti.draft">Angka di bawah ilustrasi awal — mohon verifikasi tim sebelum go-live.</p>
       <div class="slider" tabindex="0" aria-label="Use case">
         <article class="slide uc">
-          <figure class="uc-img"><img src="assets/uc-approval.jpg" alt="" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc1ind">Pendidikan Vokasi</span></figure>
+          <figure class="uc-img"><img src="assets/uc-atveti.jpg" alt="Dashboard produk Atveti" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc1ind">Exam Prep / Pendidikan</span></figure>
           <div class="uc-body">
-            <h4 data-i18n="bukti.uc1t">ATVETI</h4>
-            <p data-i18n="bukti.uc1p">Rekap data anggota & laporan kegiatan dikerjakan manual di spreadsheet — lambat dan rawan salah. Kami otomatiskan pengumpulan & penyusunan laporannya.</p>
-            <span class="uc-metric grad-text" data-i18n="bukti.uc1m">Waktu laporan −30%</span>
+            <h4 data-i18n="bukti.uc1t">Atveti</h4>
+            <p data-i18n="bukti.uc1p">Menilai Writing & Speaking IELTS/PTE secara konsisten sulit diskalakan. Kami bangun scoring AI berbasis rubrik resmi + feedback otomatis — hasil cepat dan terkalibrasi.</p>
+            <span class="uc-metric grad-text" data-i18n="bukti.uc1m">Feedback < 60 detik</span>
           </div>
         </article>
         <article class="slide uc">
-          <figure class="uc-img"><img src="assets/uc-distribusi.jpg" alt="" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc2ind">Layanan & Operasional</span></figure>
+          <figure class="uc-img"><img src="assets/uc-urai.jpg" alt="Dashboard produk URAI" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc2ind">HR / Talent Assessment</span></figure>
           <div class="uc-body">
             <h4 data-i18n="bukti.uc2t">URAI</h4>
-            <p data-i18n="bukti.uc2p">Follow-up dan koordinasi tersebar di banyak channel sehingga sering terlewat. Kami bangun alur follow-up otomatis yang terhubung ke data mereka.</p>
-            <span class="uc-metric grad-text" data-i18n="bukti.uc2m">Efisiensi tim ▲</span>
+            <p data-i18n="bukti.uc2p">Asesmen talenta manual lambat dan subjektif. Kami susun platform asesmen psikometri tervalidasi + narasi rekomendasi otomatis untuk keputusan hiring.</p>
+            <span class="uc-metric grad-text" data-i18n="bukti.uc2m">Rekomendasi otomatis</span>
           </div>
         </article>
         <article class="slide uc">
-          <figure class="uc-img"><img src="assets/uc-cs.jpg" alt="" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc3ind">Hospitality</span></figure>
-          <div class="uc-body">
-            <h4 data-i18n="bukti.uc3t">Allogio</h4>
-            <p data-i18n="bukti.uc3p">Pertanyaan tamu menumpuk dan respon lambat di luar jam kerja. AI agent menjawab 24/7 dengan konteks bisnis, eskalasi ke tim hanya saat perlu.</p>
-            <span class="uc-metric grad-text" data-i18n="bukti.uc3m">Respon < 1 menit, 24/7</span>
-          </div>
-        </article>
-        <article class="slide uc">
-          <figure class="uc-img"><img src="assets/uc-dashboard.jpg" alt="" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc4ind">Advisory & Finansial</span></figure>
+          <figure class="uc-img"><img src="assets/uc-vantage.jpg" alt="Konsol intake AI Vantage" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc4ind">Healthcare / Mental Health</span></figure>
           <div class="uc-body">
             <h4 data-i18n="bukti.uc4t">Vantage</h4>
-            <p data-i18n="bukti.uc4p">Data operasional terpencar sehingga keputusan lambat. Kami satukan ke satu dashboard ringkas dengan ringkasan otomatis.</p>
-            <span class="uc-metric grad-text" data-i18n="bukti.uc4m">Keputusan lebih cepat</span>
+            <p data-i18n="bukti.uc4p">Intake pasien menumpuk dan butuh respon cepat namun aman. AI intake assistant menjawab 24/7 dengan eskalasi krisis langsung ke staf.</p>
+            <span class="uc-metric grad-text" data-i18n="bukti.uc4m">Intake 24/7, aman</span>
           </div>
         </article>
       </div>
@@ -343,7 +327,7 @@
     <a href="#konsultasi" class="btn btn--accent js-cta" data-src="sticky" data-i18n="sticky.b">Mulai</a>
   </div>
 
-  <script defer src="i18n.js?v=3"></script>
+  <script defer src="i18n.js?v=4"></script>
   <script defer src="app.js?v=11"></script>
 </body>
 </html>

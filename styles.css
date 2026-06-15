@@ -189,6 +189,9 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.012em; }
 }
 .header .container { display: flex; align-items: center; gap: 24px; height: 72px; }
 .logo { font-weight: 800; font-size: 22px; letter-spacing: -.035em; display: inline-flex; align-items: baseline; }
+.logo--img { align-items: center; }
+.logo--img img { height: 30px; width: auto; display: block; }
+@media (max-width: 480px) { .logo--img img { height: 26px; } }
 .logo .p { color: var(--violet); }
 .logo .n { color: var(--teal); }
 .logo .tm { font-size: 10px; vertical-align: super; color: var(--muted); font-weight: 600; margin-left: 1px; }
@@ -225,6 +228,13 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.012em; }
 .hero-grid {
   display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center;
 }
+/* centered single-column hero (no side visual) */
+.hero-grid.is-center { grid-template-columns: 1fr; gap: 0; max-width: 840px; margin: 0 auto; text-align: center; }
+.hero-grid.is-center .hero-copy { max-width: 100%; }
+.hero-grid.is-center h1 { max-width: 16ch; margin-left: auto; margin-right: auto; }
+.hero-grid.is-center .lead { margin-left: auto; margin-right: auto; }
+.hero-grid.is-center .hero-cta { justify-content: center; }
+.hero-grid.is-center .hero-note { justify-content: center; }
 
 .hero-copy { max-width: 600px; }
 .pill {
@@ -927,6 +937,7 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.012em; }
   font-size: 13.5px; font-weight: 600; color: var(--muted); line-height: 1.6;
 }
 .trustbar .brandmark { cursor: default; }
+.trustbar .geo-flags { font-size: 19px; letter-spacing: 3px; vertical-align: middle; }
 
 /* ---- real client photos in slider ---- */
 .slide.photo {

@@ -40,7 +40,7 @@ function initYear() {
 
 /* ---- direct-to-WhatsApp buttons (float + footer) ---- */
 function initWhatsAppCtas() {
-  document.querySelectorAll(".wa-float.js-cta, .f-wa.js-cta").forEach((el) => {
+  document.querySelectorAll(".fm-wa.js-cta, .f-wa.js-cta").forEach((el) => {
     el.addEventListener("click", (e) => {
       e.preventDefault();
       trackLead();

@@ -99,10 +99,7 @@ button { font-family: inherit; }
   color: var(--violet);
   margin-bottom: 18px;
 }
-.eyebrow::before {
-  content: ""; width: 22px; height: 2px; border-radius: 2px;
-  background: var(--grad);
-}
+.eyebrow::before { display: none; }
 .eyebrow.no-line::before { display: none; }
 .center .eyebrow { justify-content: center; }
 .section--dark .eyebrow, .cta-section .eyebrow { color: #C4B5FD; }
@@ -894,3 +891,78 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.012em; }
 
 /* center slider content when it fits; left-align + scroll when it overflows */
 .slider { justify-content: safe center; }
+
+/* =========================================================================
+   Real photos + client trust + real use cases  (v9)
+   ========================================================================= */
+
+/* ---- hero: real photo instead of fake dashboard ---- */
+.hero-photo {
+  position: relative; border-radius: 22px; overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255,255,255,.04) inset;
+  background: var(--soft-2);
+}
+.hero-photo img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+.hero-photo .hp-cap {
+  position: absolute; left: 12px; bottom: 12px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12.5px; font-weight: 600; color: #fff;
+  background: rgba(10,14,26,.62); backdrop-filter: blur(8px);
+  padding: 8px 13px; border-radius: 999px; border: 1px solid rgba(255,255,255,.14);
+}
+.hero-photo .hp-cap .dot { width: 8px; height: 8px; }
+.hero-badge {
+  position: absolute; right: -14px; top: 14%; z-index: 3;
+  background: #fff; border: 1px solid var(--line); border-radius: 14px;
+  padding: 12px 16px; box-shadow: var(--shadow-md);
+  animation: floaty 5s var(--ease) infinite;
+}
+.hero-badge .hb-flags { font-size: 17px; letter-spacing: 2px; display: block; margin-bottom: 3px; }
+.hero-badge .hb-txt { font-size: 12.5px; font-weight: 700; color: var(--ink); }
+
+/* ---- trust bar geo line ---- */
+.trustbar .trust-geo {
+  text-align: center; margin-top: 22px;
+  font-size: 13.5px; font-weight: 600; color: var(--muted); line-height: 1.6;
+}
+.trustbar .brandmark { cursor: default; }
+
+/* ---- real client photos in slider ---- */
+.slide.photo {
+  scroll-snap-align: start; flex: 0 0 auto; flex-basis: min(82%, 480px);
+  position: relative; border-radius: var(--radius-sm); overflow: hidden;
+  border: 1px solid var(--line); box-shadow: var(--shadow-soft); background: var(--soft-2);
+}
+.slide.photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.slide.photo figcaption {
+  position: absolute; left: 10px; bottom: 10px; right: 10px;
+  font-size: 12.5px; font-weight: 600; color: #fff;
+  background: rgba(10,14,26,.6); backdrop-filter: blur(6px);
+  padding: 7px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.12);
+}
+
+/* ---- use-case image (real, replaces 📊 placeholder) ---- */
+.uc .uc-img {
+  position: relative; border-bottom: 1px solid var(--line); overflow: hidden;
+}
+.uc .uc-img img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+.uc .uc-img .uc-ind {
+  position: absolute; top: 10px; left: 10px;
+  font-size: 11px; font-weight: 800; letter-spacing: .02em;
+  color: #fff; background: rgba(124,58,237,.92);
+  padding: 5px 10px; border-radius: 8px; box-shadow: var(--shadow-soft);
+}
+
+/* draft disclaimer */
+.bukti-draft {
+  font-size: 12.5px; color: var(--muted); font-style: italic;
+  margin: 0 0 14px; padding: 8px 12px;
+  background: rgba(124,58,237,.05); border-left: 3px solid rgba(124,58,237,.4);
+  border-radius: 6px;
+}
+
+@media (max-width: 600px) {
+  .hero-badge { right: 8px; top: 10px; padding: 9px 12px; }
+  .hero-badge .hb-flags { font-size: 15px; }
+}

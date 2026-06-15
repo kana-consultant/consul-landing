@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=10" />
 
   <!-- ============================================================
        META PIXEL  —  TODO: paste Pixel ID here (mas Adit)
@@ -75,8 +75,7 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-copy">
-          <span class="pill"><span class="tag" data-i18n="hero.tag">AI Consultant</span> <span data-i18n="hero.pill">Pendamping AI untuk bisnis Anda</span></span>
-          <h1 data-i18n-html="hero.h1">Ubah pekerjaan manual jadi <span class="grad-text">sistem yang jalan sendiri</span></h1>
+          <h1 data-i18n-html="hero.h1">AI Automation untuk Meningkatkan <span class="grad-text">Efisiensi Operasional Bisnis</span> Kamu</h1>
           <p class="lead" data-i18n="hero.lead">Sebagai konsultan AI, kami dampingi dari analisa kebutuhan sampai implementasi — memetakan proses mana yang paling layak diotomatiskan, lalu membangunnya bersama tim Anda.</p>
 
           <div class="hero-cta">
@@ -90,47 +89,29 @@
           <p class="hero-note"><span class="dot"></span> <span data-i18n="hero.note">Gratis, tanpa komitmen — langsung ngobrol via WhatsApp</span></p>
         </div>
 
-        <!-- contoh tampilan dashboard (ilustrasi, statis) -->
-        <div class="hero-visual" aria-hidden="true">
-          <div class="dash">
-            <div class="dash-top">
-              <div class="dots"><i></i><i></i><i></i></div>
-              <span class="ttl">Perfect10 · Operations Cockpit</span>
-              <span class="dash-tag" data-i18n="dash.tag">Ilustrasi</span>
-            </div>
-            <div class="dash-kpis">
-              <div class="kpi kpi--accent">
-                <div class="k-lbl" data-i18n="dash.k1">Jam manual / minggu</div>
-                <div class="k-val" data-i18n="dash.k1v">312 jam</div>
-                <div class="k-sub k-down" data-i18n="dash.k1s">▼ turun 70%</div>
-              </div>
-              <div class="kpi">
-                <div class="k-lbl" data-i18n="dash.k2">Lead dibalas &lt; 60 dtk</div>
-                <div class="k-val">98%</div>
-                <div class="k-sub k-up" data-i18n="dash.k2s">▲ naik dari 41%</div>
-              </div>
-              <div class="kpi">
-                <div class="k-lbl" data-i18n="dash.k3">Akurasi data</div>
-                <div class="k-val">99.7%</div>
-                <div class="k-sub k-up" data-i18n="dash.k3s">▲ error ~ nol</div>
-              </div>
-              <div class="kpi">
-                <div class="k-lbl" data-i18n="dash.k4">Biaya proses</div>
-                <div class="k-val">−40%</div>
-                <div class="k-sub k-up" data-i18n="dash.k4s">▲ margin naik</div>
-              </div>
-            </div>
-            <div class="dash-chart">
-              <div class="c-head"><span class="c-t" data-i18n="dash.chart">Output tim / minggu</span><span class="c-v">+312%</span></div>
-              <div class="bars">
-                <span style="--h:.32"></span><span style="--h:.45"></span><span style="--h:.4"></span>
-                <span style="--h:.6"></span><span style="--h:.55"></span><span style="--h:.78"></span>
-                <span style="--h:.7"></span><span style="--h:1"></span>
-              </div>
-            </div>
-          </div>
+        <!-- foto nyata pendampingan klien (bukan mockup) -->
+        <div class="hero-visual">
+          <figure class="hero-photo">
+            <img src="assets/klien-meeting.jpg" alt="Tim Perfect10 mendampingi klien dalam sesi konsultasi" width="1280" height="720" loading="eager" decoding="async" fetchpriority="high" />
+          </figure>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRUST BAR (klien & negara) ===================== -->
+  <section class="trustbar">
+    <div class="container">
+      <p class="lbl" data-i18n="trust.lbl">Dipercaya lintas industri & lintas negara</p>
+      <div class="logo-row">
+        <span class="brandmark">ATVETI</span>
+        <span class="brandmark">URAI</span>
+        <span class="brandmark">Allogio</span>
+        <span class="brandmark">Vantage</span>
+        <span class="brandmark">Strata52</span>
+        <span class="brandmark">Torchstone</span>
+      </div>
+      <p class="trust-geo" data-i18n="trust.geo">Termasuk 2 kementerian RI · klien di 🇺🇸 AS · 🇦🇺 Australia · 🇩🇪 Jerman · 🇸🇬 Singapura · 🇮🇩 Indonesia</p>
     </div>
   </section>
 
@@ -180,8 +161,9 @@
   </section>
 
   <!-- ===================== 3. BUKTI & USE CASE (sliders) =====================
-       PLACEHOLDER — diisi tim Perfect10 (mas Alif). Teks 2 bahasa di i18n.js
-       (key bukti.*). Tambah slide: duplikat <figure>/<article> di slider.
+       Foto klien = nyata (assets/klien-*.jpg). Use case + testimoni = DRAFT,
+       angka ilustrasi (key bukti.* di i18n.js) — verifikasi tim sebelum go-live.
+       Tambah slide: duplikat <figure>/<article> di slider.
   -->
   <section class="section section--soft" id="bukti">
     <div class="container">
@@ -191,50 +173,65 @@
         <p class="lead" data-i18n-html="bukti.lead">Cuplikan kerja sama, hasil, dan dampak nyata bersama klien. <em>(Konten di bawah masih placeholder — akan diisi tim.)</em></p>
       </div>
 
-      <!-- 3a. Foto bersama klien (slider, 2 foto) -->
+      <!-- 3a. Foto bersama klien (slider, foto nyata) -->
       <div class="bukti-head"><h3 class="bukti-sub" data-i18n="bukti.sub1">Bersama klien kami</h3><span class="slider-hint" data-i18n="bukti.hint">Geser →</span></div>
       <div class="slider" tabindex="0" aria-label="Foto klien">
-        <figure class="slide ph ph-photo"><span class="ph-tag">PLACEHOLDER</span><span class="ph-cap" data-i18n="bukti.ph1">Foto meeting / onboarding klien</span></figure>
-        <figure class="slide ph ph-photo"><span class="ph-tag">PLACEHOLDER</span><span class="ph-cap" data-i18n="bukti.ph2">Foto sesi konsultasi / workshop</span></figure>
+        <figure class="slide photo"><img src="assets/klien-meeting.jpg" alt="Diskusi kebutuhan bersama tim klien" loading="lazy" decoding="async" /><figcaption data-i18n="bukti.ph1">Diskusi kebutuhan bersama tim klien</figcaption></figure>
+        <figure class="slide photo"><img src="assets/klien-cafe.jpg" alt="Sesi konsultasi lanjutan" loading="lazy" decoding="async" /><figcaption data-i18n="bukti.ph2">Sesi konsultasi lanjutan</figcaption></figure>
+        <figure class="slide photo"><img src="assets/klien-meet.jpg" alt="Pendampingan dan review online lintas tim" loading="lazy" decoding="async" /><figcaption data-i18n="bukti.ph3">Pendampingan & review online lintas tim</figcaption></figure>
       </div>
 
       <!-- 3b. Testimoni klien (slider) -->
       <div class="bukti-head"><h3 class="bukti-sub" data-i18n="bukti.sub2">Apa kata klien</h3><span class="slider-hint" data-i18n="bukti.hint">Geser →</span></div>
       <div class="slider" tabindex="0" aria-label="Testimoni klien">
         <figure class="slide tcard">
-          <span class="ph-tag">PLACEHOLDER</span>
-          <blockquote data-i18n="bukti.q1">"[ Kutipan testimoni klien — mis. klien multinasional. Tuliskan hasil konkret yang mereka rasakan. ]"</blockquote>
-          <figcaption><span class="t-ava" aria-hidden="true"></span><span><b data-i18n="bukti.qn">Nama Klien</b><small data-i18n="bukti.qr">Jabatan · Perusahaan</small></span></figcaption>
+          <blockquote data-i18n="bukti.q1">"Proses rekap dan pelaporan yang dulu makan waktu berhari-hari sekarang jauh lebih ringkas. Tim bisa fokus ke hal yang lebih penting."</blockquote>
+          <figcaption><span class="t-ava" aria-hidden="true"></span><span><b data-i18n="bukti.q1n">Pengurus ATVETI</b><small data-i18n="bukti.q1r">Asosiasi Pendidikan Vokasi</small></span></figcaption>
         </figure>
         <figure class="slide tcard">
-          <span class="ph-tag">PLACEHOLDER</span>
-          <blockquote data-i18n="bukti.q2">"[ Kutipan testimoni klien — fokus ke dampak: hemat waktu / biaya / kapasitas. ]"</blockquote>
-          <figcaption><span class="t-ava" aria-hidden="true"></span><span><b data-i18n="bukti.qn">Nama Klien</b><small data-i18n="bukti.qr">Jabatan · Perusahaan</small></span></figcaption>
+          <blockquote data-i18n="bukti.q2">"Follow-up yang tadinya sering terlewat kini jalan otomatis. Respon ke pihak luar jadi jauh lebih cepat dan rapi."</blockquote>
+          <figcaption><span class="t-ava" aria-hidden="true"></span><span><b data-i18n="bukti.q2n">Tim Operasional URAI</b><small data-i18n="bukti.q2r">Layanan & Operasional</small></span></figcaption>
         </figure>
         <figure class="slide tcard">
-          <span class="ph-tag">PLACEHOLDER</span>
-          <blockquote data-i18n="bukti.q3">"[ Kutipan testimoni klien — kesan kerja sama &amp; rekomendasi. ]"</blockquote>
-          <figcaption><span class="t-ava" aria-hidden="true"></span><span><b data-i18n="bukti.qn">Nama Klien</b><small data-i18n="bukti.qr">Jabatan · Perusahaan</small></span></figcaption>
+          <blockquote data-i18n="bukti.q3">"Pendampingannya praktis — bukan jualan tools, tapi benar-benar bantu sampai sistemnya jalan dipakai sehari-hari."</blockquote>
+          <figcaption><span class="t-ava" aria-hidden="true"></span><span><b data-i18n="bukti.q3n">Operations Lead</b><small data-i18n="bukti.q3r">Strata52 · Amerika Serikat</small></span></figcaption>
         </figure>
       </div>
 
-      <!-- 3c. Use case + contoh dashboard (slider) -->
-      <div class="bukti-head"><h3 class="bukti-sub" data-i18n="bukti.sub3">Use case &amp; contoh dashboard</h3><span class="slider-hint" data-i18n="bukti.hint">Geser →</span></div>
+      <!-- 3c. Use case per klien (slider) -->
+      <div class="bukti-head"><h3 class="bukti-sub" data-i18n="bukti.sub3">Use case &amp; hasil per klien</h3><span class="slider-hint" data-i18n="bukti.hint">Geser →</span></div>
+      <p class="bukti-draft" data-i18n="bukti.draft">Angka di bawah ilustrasi awal — mohon verifikasi tim sebelum go-live.</p>
       <div class="slider" tabindex="0" aria-label="Use case">
         <article class="slide uc">
-          <figure class="ph ph-dash"><span class="ph-tag">PLACEHOLDER</span><span class="ph-cap" data-i18n="bukti.ucd">Screenshot dashboard</span></figure>
+          <figure class="uc-img"><img src="assets/uc-approval.jpg" alt="" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc1ind">Pendidikan Vokasi</span></figure>
           <div class="uc-body">
-            <h4 data-i18n="bukti.uct">[ Judul use case ]</h4>
-            <p data-i18n="bukti.ucp">[ Ringkas: masalah klien → solusi automation → hasil terukur. ]</p>
-            <span class="uc-metric grad-text" data-i18n="bukti.ucm">[ Hasil ]</span>
+            <h4 data-i18n="bukti.uc1t">ATVETI</h4>
+            <p data-i18n="bukti.uc1p">Rekap data anggota & laporan kegiatan dikerjakan manual di spreadsheet — lambat dan rawan salah. Kami otomatiskan pengumpulan & penyusunan laporannya.</p>
+            <span class="uc-metric grad-text" data-i18n="bukti.uc1m">Waktu laporan −30%</span>
           </div>
         </article>
         <article class="slide uc">
-          <figure class="ph ph-dash"><span class="ph-tag">PLACEHOLDER</span><span class="ph-cap" data-i18n="bukti.ucd">Screenshot dashboard</span></figure>
+          <figure class="uc-img"><img src="assets/uc-distribusi.jpg" alt="" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc2ind">Layanan & Operasional</span></figure>
           <div class="uc-body">
-            <h4 data-i18n="bukti.uct">[ Judul use case ]</h4>
-            <p data-i18n="bukti.ucp">[ Ringkas: masalah klien → solusi automation → hasil terukur. ]</p>
-            <span class="uc-metric grad-text" data-i18n="bukti.ucm">[ Hasil ]</span>
+            <h4 data-i18n="bukti.uc2t">URAI</h4>
+            <p data-i18n="bukti.uc2p">Follow-up dan koordinasi tersebar di banyak channel sehingga sering terlewat. Kami bangun alur follow-up otomatis yang terhubung ke data mereka.</p>
+            <span class="uc-metric grad-text" data-i18n="bukti.uc2m">Efisiensi tim ▲</span>
+          </div>
+        </article>
+        <article class="slide uc">
+          <figure class="uc-img"><img src="assets/uc-cs.jpg" alt="" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc3ind">Hospitality</span></figure>
+          <div class="uc-body">
+            <h4 data-i18n="bukti.uc3t">Allogio</h4>
+            <p data-i18n="bukti.uc3p">Pertanyaan tamu menumpuk dan respon lambat di luar jam kerja. AI agent menjawab 24/7 dengan konteks bisnis, eskalasi ke tim hanya saat perlu.</p>
+            <span class="uc-metric grad-text" data-i18n="bukti.uc3m">Respon < 1 menit, 24/7</span>
+          </div>
+        </article>
+        <article class="slide uc">
+          <figure class="uc-img"><img src="assets/uc-dashboard.jpg" alt="" loading="lazy" decoding="async" /><span class="uc-ind" data-i18n="bukti.uc4ind">Advisory & Finansial</span></figure>
+          <div class="uc-body">
+            <h4 data-i18n="bukti.uc4t">Vantage</h4>
+            <p data-i18n="bukti.uc4p">Data operasional terpencar sehingga keputusan lambat. Kami satukan ke satu dashboard ringkas dengan ringkasan otomatis.</p>
+            <span class="uc-metric grad-text" data-i18n="bukti.uc4m">Keputusan lebih cepat</span>
           </div>
         </article>
       </div>
@@ -337,11 +334,6 @@
     </div>
   </footer>
 
-  <!-- floating WhatsApp -->
-  <a href="#" class="wa-float js-cta" data-src="float" aria-label="Chat WhatsApp">
-    <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.219zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-  </a>
-
   <!-- sticky mobile CTA -->
   <div class="sticky-cta" id="sticky-cta">
     <div class="sc-txt">
@@ -351,7 +343,7 @@
     <a href="#konsultasi" class="btn btn--accent js-cta" data-src="sticky" data-i18n="sticky.b">Mulai</a>
   </div>
 
-  <script defer src="i18n.js?v=2"></script>
-  <script defer src="app.js?v=10"></script>
+  <script defer src="i18n.js?v=3"></script>
+  <script defer src="app.js?v=11"></script>
 </body>
 </html>

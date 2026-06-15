@@ -943,6 +943,11 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.012em; }
   filter: grayscale(1); opacity: .6; transition: filter .2s, opacity .2s;
 }
 .logo-row .cl-logo:hover { filter: none; opacity: 1; }
+.logo-row .cl-more {
+  font-size: 14px; font-weight: 800; color: var(--violet);
+  background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.2);
+  padding: 7px 14px; border-radius: 999px; opacity: 1;
+}
 
 /* ---- real client photos in slider ---- */
 .slide.photo {

@@ -26,6 +26,7 @@ const I18N = {
 
     "trust.lbl": "Dipercaya lintas industri & lintas negara",
     "trust.geo": "Termasuk 2 kementerian RI · <span class=\"geo-flags\">🇺🇸 🇦🇺 🇩🇪 🇸🇬 🇮🇩</span>",
+    "trust.more": "+20 klien lainnya",
 
     "dash.tag": "Ilustrasi",
     "dash.k1": "Jam manual / minggu", "dash.k1v": "312 jam", "dash.k1s": "▼ turun 70%",
@@ -136,6 +137,7 @@ const I18N = {
 
     "trust.lbl": "Trusted across industries & borders",
     "trust.geo": "Including 2 Indonesian ministries · <span class=\"geo-flags\">🇺🇸 🇦🇺 🇩🇪 🇸🇬 🇮🇩</span>",
+    "trust.more": "+20 more clients",
 
     "dash.tag": "Illustration",
     "dash.k1": "Manual hours / week", "dash.k1v": "312 hrs", "dash.k1s": "▼ down 70%",

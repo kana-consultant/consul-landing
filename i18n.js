@@ -25,7 +25,7 @@ const I18N = {
     "hero.badge": "Dipercaya klien di 5 negara",
 
     "trust.lbl": "Dipercaya lintas industri & lintas negara",
-    "trust.geo": "<span class=\"geo-flags\">🇺🇸 🇦🇺 🇩🇪 🇸🇬 🇮🇩</span><span class=\"geo-note\">Termasuk Kemenag & BSSN</span>",
+    "trust.geo": "<span class=\"geo-flags\">🇺🇸 🇦🇺 🇩🇪 🇸🇬 🇮🇩</span><span class=\"geo-note\"><img class=\"gov-logo\" src=\"assets/logos/kemenag.svg\" alt=\"Kemenag\" loading=\"lazy\"><img class=\"gov-logo\" src=\"assets/logos/bssn.png\" alt=\"BSSN\" loading=\"lazy\"></span>",
     "trust.more": "+20 klien lainnya",
 
     "dash.tag": "Ilustrasi",
@@ -136,7 +136,7 @@ const I18N = {
     "hero.badge": "Trusted by clients in 5 countries",
 
     "trust.lbl": "Trusted across industries & borders",
-    "trust.geo": "<span class=\"geo-flags\">🇺🇸 🇦🇺 🇩🇪 🇸🇬 🇮🇩</span><span class=\"geo-note\">Including Indonesia's Kemenag & BSSN</span>",
+    "trust.geo": "<span class=\"geo-flags\">🇺🇸 🇦🇺 🇩🇪 🇸🇬 🇮🇩</span><span class=\"geo-note\"><img class=\"gov-logo\" src=\"assets/logos/kemenag.svg\" alt=\"Kemenag\" loading=\"lazy\"><img class=\"gov-logo\" src=\"assets/logos/bssn.png\" alt=\"BSSN\" loading=\"lazy\"></span>",
     "trust.more": "+20 more clients",
 
     "dash.tag": "Illustration",

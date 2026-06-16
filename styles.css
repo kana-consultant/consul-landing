@@ -939,13 +939,14 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.012em; }
 .trustbar .brandmark { cursor: default; }
 .trustbar .geo-flags { display: block; font-size: 22px; letter-spacing: 4px; line-height: 1.2; margin-top: 12px; }
 .trustbar .geo-note { display: flex; align-items: center; justify-content: center; gap: 18px; }
-.trustbar .gov-logo { height: 40px; width: auto; opacity: .9; }
-.logo-row .gov-logo { filter: none; opacity: .85; height: 36px; }
+.trustbar .gov-logo { height: 52px; width: auto; opacity: 1; }
+.logo-row .gov-logo { filter: none; opacity: 1; height: 52px; }
 .logo-row .cl-logo {
-  height: 30px; width: auto; max-width: 140px; object-fit: contain;
-  filter: grayscale(1); opacity: .6; transition: filter .2s, opacity .2s;
+  height: 40px; width: auto; max-width: 150px; object-fit: contain;
+  filter: none; opacity: 1; transition: opacity .2s;
 }
-.logo-row .cl-logo:hover { filter: none; opacity: 1; }
+.logo-row .cl-logo[alt="Atveti"] { height: 56px; }
+.logo-row .cl-logo:hover { opacity: .85; }
 .logo-row .cl-more {
   font-size: 14px; font-weight: 800; color: var(--violet);
   background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.2);

@@ -940,6 +940,7 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.012em; }
 .trustbar .geo-flags { display: block; font-size: 22px; letter-spacing: 4px; line-height: 1.2; margin-top: 12px; }
 .trustbar .geo-note { display: flex; align-items: center; justify-content: center; gap: 18px; }
 .trustbar .gov-logo { height: 40px; width: auto; opacity: .9; }
+.logo-row .gov-logo { filter: none; opacity: .85; height: 36px; }
 .logo-row .cl-logo {
   height: 30px; width: auto; max-width: 140px; object-fit: contain;
   filter: grayscale(1); opacity: .6; transition: filter .2s, opacity .2s;

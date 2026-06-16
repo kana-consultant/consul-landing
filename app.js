@@ -9,7 +9,7 @@
               contoh: 0812-3456-7890  ->  "6281234567890"
    ---------------------------------------------------------------------- */
 const CONFIG = {
-  WA_NUMBER: "62XXXXXXXXXXX", // TODO: ganti dengan nomor WA Perfect10
+  WA_NUMBER: "628219257827", // WA Bisnis PERFECT10 (0821-9257-827)
   DEFAULT_MSG: "Halo Perfect10, saya tertarik konsultasi gratis soal AI Automation untuk bisnis saya.",
 };
 

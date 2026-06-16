@@ -416,6 +416,11 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.012em; }
 .sol .ic svg { width: 25px; height: 25px; }
 .sol h3 { color: #fff; margin-bottom: 9px; }
 .sol p { font-size: 14.5px; color: var(--d-body); line-height: 1.6; }
+.sol .sol-fit {
+  margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(167,139,250,.16);
+  font-size: 13px; color: var(--d-muted, #9aa0b4); line-height: 1.55;
+}
+.sol .sol-fit-lbl { font-weight: 700; color: #C4B5FD; }
 
 /* ===== process / how it works ===== */
 .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; position: relative; }

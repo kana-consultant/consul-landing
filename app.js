@@ -9,7 +9,7 @@
               contoh: 0812-3456-7890  ->  "6281234567890"
    ---------------------------------------------------------------------- */
 const CONFIG = {
-  WA_NUMBER: "628219257827", // WA Bisnis PERFECT10 (0821-9257-827)
+  WA_NUMBER: "628216957827", // WA Bisnis PERFECT10 (0821-6957-827)
   DEFAULT_MSG: "Halo Perfect10, saya tertarik konsultasi gratis soal AI Automation untuk bisnis saya.",
 };
 
@@ -30,7 +30,34 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeaderScroll();
   initStickyCta();
   initSliders();
+  initFaqToggle();
 });
+
+/* ---- FAQ: reveal the remaining questions on tap ---- */
+function initFaqToggle() {
+  const btn = document.getElementById("faq-toggle");
+  const more = document.getElementById("faq-more");
+  if (!btn || !more) return;
+  const label = btn.querySelector("[data-i18n]");
+
+  btn.addEventListener("click", () => {
+    const open = more.hidden;
+    more.hidden = !open;
+    btn.setAttribute("aria-expanded", String(open));
+    btn.classList.toggle("is-open", open);
+
+    // swap label key + text so it stays correct across language switches
+    if (label) {
+      const key = open ? "faq.less" : "faq.more";
+      label.setAttribute("data-i18n", key);
+      try {
+        const lang = typeof getLang === "function" ? getLang() : "id";
+        const dict = (typeof I18N === "object" && I18N[lang]) || {};
+        if (dict[key] != null) label.textContent = dict[key];
+      } catch (e) {}
+    }
+  });
+}
 
 /* ---- footer year ---- */
 function initYear() {

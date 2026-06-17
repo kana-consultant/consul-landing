@@ -125,6 +125,8 @@ const I18N = {
     "faq.a9": "Tidak harus. Kami bangun supaya bisa Anda kelola sendiri, lengkap dengan pendampingan. Kalau mau, kami juga sedia dukungan berkelanjutan — pilihan ada di tangan Anda.",
     "faq.q10": "AI ini bakal gantiin karyawan kami?",
     "faq.a10": "Tujuannya bukan ganti orang, tapi hilangkan kerja repetitif yang bikin tim Anda boros waktu — supaya mereka fokus ke hal yang butuh penilaian manusia.",
+    "faq.more": "Lihat semua pertanyaan",
+    "faq.less": "Tampilkan lebih sedikit",
 
     "footer.mini": "Konsultan AI · Automation untuk efisiensi operasional bisnis.",
     "footer.wa": "Chat WhatsApp",
@@ -249,6 +251,8 @@ const I18N = {
     "faq.a9": "Not at all. We build it so you can run it yourself, with full guidance. If you want, we also offer ongoing support — the choice is yours.",
     "faq.q10": "Will this AI replace our employees?",
     "faq.a10": "The goal isn't to replace people, but to remove the repetitive work that drains your team's time — so they can focus on what needs human judgment.",
+    "faq.more": "See all questions",
+    "faq.less": "Show fewer",
 
     "footer.mini": "AI Consultant · Automation for operational efficiency.",
     "footer.wa": "Chat on WhatsApp",

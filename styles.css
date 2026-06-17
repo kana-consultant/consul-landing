@@ -835,6 +835,19 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.012em; }
 .faq-simple summary::after { content: "+"; font-size: 24px; line-height: 1; color: var(--violet); font-weight: 400; }
 .faq-simple details[open] summary::after { content: "−"; }
 .faq-simple details p { padding: 0 0 18px; color: var(--body); font-size: 15px; line-height: 1.65; }
+.faq-more { display: grid; gap: 10px; margin-top: 10px; }
+.faq-more[hidden] { display: none; }
+.faq-toggle {
+  display: inline-flex; align-items: center; gap: 8px; justify-self: center;
+  margin-top: 18px; padding: 11px 22px;
+  background: #fff; border: 1px solid var(--line); border-radius: 999px;
+  font: inherit; font-weight: 600; font-size: 15px; color: var(--violet);
+  cursor: pointer; box-shadow: var(--shadow-soft);
+  transition: background .15s ease, border-color .15s ease;
+}
+.faq-toggle:hover { background: var(--soft, #f6f5ff); border-color: var(--violet); }
+.faq-toggle-ic { width: 18px; height: 18px; transition: transform .2s ease; }
+.faq-toggle.is-open .faq-toggle-ic { transform: rotate(180deg); }
 
 /* minimal footer */
 .footer-mini { background: var(--ink); color: #C9CEDB; padding: 26px 0; }

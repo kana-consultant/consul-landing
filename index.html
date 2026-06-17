@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20" />
+  <link rel="stylesheet" href="styles.css?v=21" />
 
   <!-- ============================================================
        META PIXEL  —  Perfect10 (ID: 4298717820342157)
@@ -231,6 +231,7 @@
           <summary data-i18n="faq.q4">Berapa biayanya?</summary>
           <p data-i18n="faq.a4">Menyesuaikan ruang lingkup dan dampak yang ingin dicapai. Mulai dari konsultasi gratis, lalu estimasi yang transparan tanpa biaya tersembunyi.</p>
         </details>
+        <div class="faq-more" id="faq-more" hidden>
         <details>
           <summary data-i18n="faq.q5">Berapa lama sampai kelihatan hasilnya?</summary>
           <p data-i18n="faq.a5">Tergantung kompleksitas, tapi kami sengaja mulai dari satu proses berdampak tinggi supaya Anda lihat hasil nyata dalam hitungan minggu, bukan bulan.</p>
@@ -255,6 +256,11 @@
           <summary data-i18n="faq.q10">AI ini bakal gantiin karyawan kami?</summary>
           <p data-i18n="faq.a10">Tujuannya bukan ganti orang, tapi hilangkan kerja repetitif yang bikin tim Anda boros waktu — supaya mereka fokus ke hal yang butuh penilaian manusia.</p>
         </details>
+        </div>
+        <button type="button" class="faq-toggle" id="faq-toggle" aria-expanded="false" aria-controls="faq-more">
+          <span data-i18n="faq.more">Lihat semua pertanyaan</span>
+          <svg class="faq-toggle-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
       </div>
     </div>
   </section>
@@ -336,7 +342,7 @@
     <a href="#konsultasi" class="btn btn--accent js-cta" data-src="sticky" data-i18n="sticky.b">Mulai</a>
   </div>
 
-  <script defer src="i18n.js?v=10"></script>
-  <script defer src="app.js?v=11"></script>
+  <script defer src="i18n.js?v=11"></script>
+  <script defer src="app.js?v=12"></script>
 </body>
 </html>

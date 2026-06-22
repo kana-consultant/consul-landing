@@ -18,9 +18,16 @@ function waLink(text) {
   return `https://wa.me/${CONFIG.WA_NUMBER}?text=${encodeURIComponent(text || CONFIG.DEFAULT_MSG)}`;
 }
 
-/* fire Meta Pixel Lead event if pixel is loaded */
-function trackLead() {
-  if (typeof window.fbq === "function") window.fbq("track", "Lead");
+/* Open WhatsApp in a new tab, then move THIS tab to the thank-you page.
+   The Meta Pixel `Lead` event lives on thanks.html (not here), so a lead is
+   only counted once the user actually reaches the thank-you page — a single,
+   valid conversion instead of firing on the landing page. The wa.me link is
+   passed along so thanks.html can offer a "re-open WhatsApp" fallback. */
+function goToWhatsAppThenThanks(url) {
+  // open WA first, synchronously inside the click handler, so the browser
+  // treats it as a user-initiated action and does not block the popup
+  window.open(url, "_blank", "noopener");
+  window.location.href = "thanks.html?wa=" + encodeURIComponent(url);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -70,8 +77,7 @@ function initWhatsAppCtas() {
   document.querySelectorAll(".fm-wa.js-cta, .f-wa.js-cta").forEach((el) => {
     el.addEventListener("click", (e) => {
       e.preventDefault();
-      trackLead();
-      window.open(waLink(), "_blank", "noopener");
+      goToWhatsAppThenThanks(waLink());
     });
   });
 }
@@ -94,8 +100,7 @@ function initLeadForm() {
       v("pesan") && `Catatan: ${v("pesan")}`,
     ].filter(Boolean);
 
-    trackLead();
-    window.open(waLink(lines.join("\n")), "_blank", "noopener");
+    goToWhatsAppThenThanks(waLink(lines.join("\n")));
   });
 }
 

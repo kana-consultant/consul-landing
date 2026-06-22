@@ -82,7 +82,9 @@ function initWhatsAppCtas() {
   });
 }
 
-/* ---- lead form -> compose WhatsApp message (no hard requirements) ---- */
+/* ---- lead form -> compose WhatsApp message ----
+   "Tantangan" (id=kebutuhan) is required so empty / accidental submits can't
+   fire a lead. Native validation blocks first; this guard is the fallback. */
 function initLeadForm() {
   const form = document.getElementById("lead-form");
   if (!form) return;
@@ -91,6 +93,14 @@ function initLeadForm() {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+
+    // require a challenge to be picked — qualifies the lead, blocks empty submits
+    if (!v("kebutuhan")) {
+      const sel = document.getElementById("kebutuhan");
+      if (sel && typeof sel.reportValidity === "function") sel.reportValidity();
+      sel?.focus();
+      return;
+    }
 
     const lines = [
       "Halo Perfect10, saya ingin konsultasi gratis.",

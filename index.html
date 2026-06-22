@@ -300,14 +300,14 @@
             <div><h3 data-i18n="form.head">Mulai konsultasi</h3></div>
           </div>
           <p class="sub" data-i18n="form.sub">Isi singkat, lalu lanjut ngobrol di WhatsApp.</p>
-          <form id="lead-form" novalidate>
+          <form id="lead-form">
             <div class="field">
               <label for="nama"><span data-i18n="form.l1">Nama / Bisnis</span> <span class="opt" data-i18n="form.opt">(opsional)</span></label>
               <input id="nama" name="nama" type="text" placeholder="Nama atau nama bisnis Anda" data-i18n-ph="form.ph1" autocomplete="name" />
             </div>
             <div class="field" id="f-kebutuhan">
-              <label for="kebutuhan" data-i18n="form.l2">Tantangan operasional utama Anda</label>
-              <select id="kebutuhan" name="kebutuhan">
+              <label for="kebutuhan"><span data-i18n="form.l2">Tantangan operasional utama Anda</span> <span class="req" aria-hidden="true">*</span></label>
+              <select id="kebutuhan" name="kebutuhan" required>
                 <option value="" data-i18n="form.o0">Pilih yang paling terasa…</option>
                 <option data-i18n="form.o1">Tim habis waktu untuk tugas repetitif</option>
                 <option data-i18n="form.o2">Respon ke customer lambat / lead bocor</option>
@@ -356,6 +356,6 @@
   </div>
 
   <script defer src="i18n.js?v=11"></script>
-  <script defer src="app.js?v=13"></script>
+  <script defer src="app.js?v=14"></script>
 </body>
 </html>

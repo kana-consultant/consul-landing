@@ -7,7 +7,7 @@
   <meta name="darkreader-lock" />
   <meta name="robots" content="noindex,nofollow" />
   <title>Terima kasih — Perfect10</title>
-  <meta name="description" content="Terima kasih. WhatsApp sudah terbuka di tab baru — Anda tinggal kirim pesannya." />
+  <meta name="description" content="Terima kasih. Data Anda sudah kami terima — tim Perfect10 akan menghubungi Anda via WhatsApp/telepon segera." />
 
   <meta name="theme-color" content="#0A0E1A" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
@@ -97,8 +97,8 @@
 
     <h1 data-t="title">Terima kasih! 🎉</h1>
     <p class="lede" data-t="lede">
-      WhatsApp sudah terbuka di tab baru — Anda tinggal <b>kirim pesannya</b>.
-      Tim Perfect10 akan segera membalas.
+      Data Anda sudah kami terima. Tim Perfect10 akan <b>menghubungi Anda</b>
+      via WhatsApp/telepon segera.
     </p>
 
     <a id="wa-btn" class="btn btn--wa" href="#" rel="noopener" target="_blank">
@@ -108,7 +108,7 @@
 
     <a class="btn btn--ghost" href="index.html" data-t="home">Kembali ke beranda</a>
 
-    <p class="note" data-t="note">Pesan tidak terkirim otomatis — pastikan Anda menekan tombol kirim di WhatsApp.</p>
+    <p class="note" data-t="note">Biasanya kami menghubungi pada jam kerja. Tidak perlu melakukan apa pun lagi.</p>
     <p class="brand"><img src="assets/logo.webp" alt="Perfect10" width="384" height="131" /></p>
   </main>
 
@@ -125,30 +125,40 @@
       var T = {
         id: {
           title: "Terima kasih! 🎉",
-          lede: "WhatsApp sudah terbuka di tab baru — Anda tinggal <b>kirim pesannya</b>. Tim Perfect10 akan segera membalas.",
+          lede: "Data Anda sudah kami terima. Tim Perfect10 akan <b>menghubungi Anda</b> via WhatsApp/telepon segera.",
+          ledeWa: "WhatsApp sudah terbuka di tab baru — Anda tinggal <b>kirim pesannya</b>. Tim Perfect10 akan segera membalas.",
           waBtn: "Buka WhatsApp lagi",
           home: "Kembali ke beranda",
-          note: "Pesan tidak terkirim otomatis — pastikan Anda menekan tombol kirim di WhatsApp.",
+          note: "Biasanya kami menghubungi pada jam kerja. Tidak perlu melakukan apa pun lagi.",
+          noteWa: "Pesan tidak terkirim otomatis — pastikan Anda menekan tombol kirim di WhatsApp.",
         },
         en: {
           title: "Thank you! 🎉",
-          lede: "WhatsApp just opened in a new tab — all you have to do is <b>send the message</b>. The Perfect10 team will reply shortly.",
+          lede: "We've received your details. The Perfect10 team will <b>reach out to you</b> via WhatsApp/phone shortly.",
+          ledeWa: "WhatsApp just opened in a new tab — all you have to do is <b>send the message</b>. The Perfect10 team will reply shortly.",
           waBtn: "Open WhatsApp again",
           home: "Back to home",
-          note: "The message isn't sent automatically — make sure you tap send in WhatsApp.",
+          note: "We usually reach out during business hours. Nothing else for you to do.",
+          noteWa: "The message isn't sent automatically — make sure you tap send in WhatsApp.",
         },
       };
       var dict = T[lang] || T.id;
+
+      // ?wa= present = the visitor clicked a direct-WhatsApp CTA (WA opened in a
+      // new tab). Absent = they submitted the lead form (we stored it, we follow
+      // up). Copy differs per path.
+      var wa = new URLSearchParams(location.search).get("wa");
+      var key = function (k) { return wa && dict[k + "Wa"] != null ? dict[k + "Wa"] : dict[k]; };
+
       document.querySelectorAll("[data-t]").forEach(function (el) {
-        var v = dict[el.getAttribute("data-t")];
+        var k = el.getAttribute("data-t");
+        var v = (k === "lede" || k === "note") ? key(k) : dict[k];
         if (v == null) return;
-        if (el.getAttribute("data-t") === "lede") el.innerHTML = v;
+        if (k === "lede") el.innerHTML = v;
         else el.textContent = v;
       });
       if (dict.title) document.title = dict.title.replace(/[\s🎉!]+$/, "") + " — Perfect10";
 
-      // fallback WhatsApp button: the landing page passes the wa.me link via ?wa=
-      var wa = new URLSearchParams(location.search).get("wa");
       var btn = document.getElementById("wa-btn");
       if (wa) {
         btn.setAttribute("href", wa);

@@ -11,6 +11,12 @@
 const CONFIG = {
   WA_NUMBER: "628216957827", // WA Bisnis PERFECT10 (0821-6957-827)
   DEFAULT_MSG: "Halo Perfect10, saya tertarik konsultasi gratis soal AI Automation untuk bisnis saya.",
+
+  // Lead store (Google Apps Script Web App → Google Sheet).
+  // Leads land in a Sheet that the Hermes sales agent polls over HTTP and
+  // follows up on. Deploy backend/leads.gs and paste the /exec URL here.
+  // See backend/SETUP.md. Until set, the form falls back to opening WhatsApp.
+  LEAD_ENDPOINT: "", // e.g. "https://script.google.com/macros/s/AKfy.../exec"
 };
 
 /* build wa.me link */
@@ -82,35 +88,95 @@ function initWhatsAppCtas() {
   });
 }
 
-/* ---- lead form -> compose WhatsApp message ----
-   "Tantangan" (id=kebutuhan) is required so empty / accidental submits can't
-   fire a lead. Native validation blocks first; this guard is the fallback. */
+/* ---- lead form -> store on server, then Perfect10 follows up ----
+   Flow (per client request): the lead's contact number (id=kontak) + challenge
+   (id=kebutuhan) are REQUIRED. On submit we POST the lead to a Google Sheet via
+   an Apps Script Web App (CONFIG.LEAD_ENDPOINT). The Hermes sales agent polls
+   that Sheet over HTTP and does the WhatsApp follow-up — the visitor no longer
+   has to open WhatsApp themselves. We then send them to the thank-you page
+   (where the Meta Pixel `Lead` fires).
+
+   Fallbacks: if no endpoint is configured yet, or the POST can't reach the
+   network, we degrade to the old "open WhatsApp" behaviour so a lead is never
+   lost while the backend is being set up. */
 function initLeadForm() {
   const form = document.getElementById("lead-form");
   if (!form) return;
 
   const v = (id) => (document.getElementById(id)?.value || "").trim();
+  const errEl = document.getElementById("form-err");
+  const btn = form.querySelector('button[type="submit"]');
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    // require a challenge to be picked — qualifies the lead, blocks empty submits
-    if (!v("kebutuhan")) {
-      const sel = document.getElementById("kebutuhan");
-      if (sel && typeof sel.reportValidity === "function") sel.reportValidity();
-      sel?.focus();
-      return;
-    }
-
+  // WhatsApp message used as the network-failure fallback only.
+  const waFallback = () => {
     const lines = [
       "Halo Perfect10, saya ingin konsultasi gratis.",
       "",
       v("nama") && `Nama/Bisnis: ${v("nama")}`,
+      v("kontak") && `Kontak: ${v("kontak")}`,
       v("kebutuhan") && `Tantangan: ${v("kebutuhan")}`,
       v("pesan") && `Catatan: ${v("pesan")}`,
     ].filter(Boolean);
-
     goToWhatsAppThenThanks(waLink(lines.join("\n")));
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (errEl) errEl.hidden = true;
+
+    // require a contact number — this is who Perfect10 follows up with
+    if (!v("kontak")) {
+      const f = document.getElementById("kontak");
+      f?.reportValidity?.();
+      f?.focus();
+      return;
+    }
+    // require a challenge to be picked — qualifies the lead, blocks empty submits
+    if (!v("kebutuhan")) {
+      const sel = document.getElementById("kebutuhan");
+      sel?.reportValidity?.();
+      sel?.focus();
+      return;
+    }
+
+    // no backend configured yet → keep working via the WhatsApp fallback
+    if (!CONFIG.LEAD_ENDPOINT) {
+      waFallback();
+      return;
+    }
+
+    const payload = {
+      nama: v("nama"),
+      kontak: v("kontak"),
+      kebutuhan: v("kebutuhan"),
+      pesan: v("pesan"),
+      lang: (typeof getLang === "function" ? getLang() : "id"),
+      source: location.href,
+      ua: navigator.userAgent,
+    };
+
+    btn?.classList.add("is-loading");
+    btn && (btn.disabled = true);
+
+    try {
+      // text/plain keeps this a CORS "simple request" (no preflight); Apps
+      // Script reads the raw body in doPost via e.postData.contents.
+      await fetch(CONFIG.LEAD_ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload),
+      });
+      // no-cors gives an opaque response (can't read status); a resolved
+      // promise means the request left the browser — treat as submitted.
+      window.location.href = "thanks.html";
+    } catch (_) {
+      // network error → surface the error and fall back to WhatsApp
+      btn?.classList.remove("is-loading");
+      btn && (btn.disabled = false);
+      if (errEl) errEl.hidden = false;
+      waFallback();
+    }
   });
 }
 

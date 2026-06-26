@@ -16,7 +16,7 @@ const CONFIG = {
   // Leads land in a Sheet that the Hermes sales agent polls over HTTP and
   // follows up on. Deploy backend/leads.gs and paste the /exec URL here.
   // See backend/SETUP.md. Until set, the form falls back to opening WhatsApp.
-  LEAD_ENDPOINT: "", // e.g. "https://script.google.com/macros/s/AKfy.../exec"
+  LEAD_ENDPOINT: "https://script.google.com/macros/s/AKfycbzsW30_hq1ohBVIOUH6IXGmBSyYUSoVaCVJiw-4IJJy06Xo3G-RnqmBYOAFy1-7CA-t3A/exec",
 };
 
 /* build wa.me link */

@@ -35,7 +35,7 @@ function goToWhatsAppThenThanks(url, cta) {
   // open WA first, synchronously inside the click handler, so the browser
   // treats it as a user-initiated action and does not block the popup
   window.open(url, "_blank", "noopener");
-  window.location.href = "thanks.html?wa=" + encodeURIComponent(url);
+  window.location.href = "/thanks.html?wa=" + encodeURIComponent(url);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -225,7 +225,7 @@ function initLeadForm() {
       // Success only: the catch below never queues this event. Only the
       // chosen challenge (a fixed option value) goes along, no contact data.
       window.P10Track?.trackOnNextPage("consultation_form_submit", { challenge: payload.kebutuhan });
-      window.location.href = "thanks.html";
+      window.location.href = "/thanks.html";
     } catch (_) {
       // network error → surface the error and fall back to WhatsApp
       btn?.classList.remove("is-loading");

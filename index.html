@@ -7,6 +7,7 @@
   <meta name="darkreader-lock" />
   <title>Perfect10 — Konsultan AI untuk Efisiensi Operasional Bisnis</title>
   <meta name="description" content="Perfect10 adalah konsultan AI. Kami bantu petakan, rancang, dan terapkan automation paling berdampak untuk bisnis Anda. Konsultasi gratis via WhatsApp." />
+  <link rel="canonical" href="https://consul.perfect10.id/" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Perfect10 — Konsultan AI untuk Bisnis" />
@@ -25,6 +26,39 @@
   <meta name="twitter:title" content="Perfect10 — Konsultan AI untuk Bisnis" />
   <meta name="twitter:description" content="Konsultan AI: kami bantu petakan, rancang, dan terapkan automation yang paling berdampak untuk bisnis Anda." />
   <meta name="twitter:image" content="https://consul.perfect10.id/assets/og-cover.png" />
+
+  <!-- Structured data (P10 SEO D4). Every text value is copied from visible
+       copy: name/logo = header logo, Service name = H1, description = hero
+       lead, serviceType = footer line. Keep them in sync when copy changes. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://consul.perfect10.id/#organization",
+        "name": "Perfect10",
+        "url": "https://consul.perfect10.id/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://consul.perfect10.id/assets/logo.webp",
+          "width": 384,
+          "height": 131
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://consul.perfect10.id/#service",
+        "name": "AI Automation untuk Meningkatkan Efisiensi Operasional Bisnis",
+        "serviceType": "Konsultan AI",
+        "description": "Kami dampingi Anda untuk menemukan proses yang paling menyita waktu, lalu membangun automasi AI yang memberikan dampak nyata bagi bisnis Anda.",
+        "provider": { "@id": "https://consul.perfect10.id/#organization" },
+        "areaServed": { "@type": "Country", "name": "Indonesia" },
+        "url": "https://consul.perfect10.id/"
+      }
+    ]
+  }
+  </script>
 
   <meta name="theme-color" content="#0A0E1A" />
 
@@ -50,6 +84,9 @@
   <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=2041952410057672&ev=PageView&noscript=1" alt=""/></noscript>
   <!-- End Meta Pixel Code -->
+
+  <!-- PostHog conversion events (see analytics.js) -->
+  <script src="analytics.js?v=1"></script>
 </head>
 
 <body>
@@ -300,7 +337,7 @@
             <div><h3 data-i18n="form.head">Mulai konsultasi</h3></div>
           </div>
           <p class="sub" data-i18n="form.sub">Isi singkat — tim Perfect10 yang akan menghubungi Anda.</p>
-          <form id="lead-form">
+          <form id="lead-form" class="ph-no-capture">
             <div class="field">
               <label for="nama"><span data-i18n="form.l1">Nama / Bisnis</span> <span class="opt" data-i18n="form.opt">(opsional)</span></label>
               <input id="nama" name="nama" type="text" placeholder="Nama atau nama bisnis Anda" data-i18n-ph="form.ph1" autocomplete="name" />
@@ -325,6 +362,14 @@
               <label for="pesan"><span data-i18n="form.l3">Catatan singkat</span> <span class="opt" data-i18n="form.opt">(opsional)</span></label>
               <textarea id="pesan" name="pesan" placeholder="Contoh: tim CS kewalahan balas chat, ingin otomatis…" data-i18n-ph="form.ph3"></textarea>
             </div>
+            <!-- first-visit attribution, filled by app.js (initAttribution) -->
+            <input type="hidden" id="landing_page" name="landing_page" />
+            <input type="hidden" id="referrer" name="referrer" />
+            <input type="hidden" id="utm_source" name="utm_source" />
+            <input type="hidden" id="utm_medium" name="utm_medium" />
+            <input type="hidden" id="utm_campaign" name="utm_campaign" />
+            <input type="hidden" id="utm_content" name="utm_content" />
+            <input type="hidden" id="utm_term" name="utm_term" />
             <button type="submit" class="btn btn--wa btn--block btn--lg">
               <span data-i18n="form.submit">Kirim — tim kami hubungi Anda</span>
             </button>
@@ -360,6 +405,6 @@
   </div>
 
   <script defer src="i18n.js?v=13"></script>
-  <script defer src="app.js?v=17"></script>
+  <script defer src="app.js?v=19"></script>
 </body>
 </html>

@@ -27,9 +27,14 @@ const SECRET = "CHANGE_ME_LONG_RANDOM_TOKEN";
 const SHEET_NAME = "Leads";
 
 // Column order. Keep in sync with the header row written by ensureSheet_().
+// New columns go at the END only: Hermes and existing rows rely on the
+// positions of the first eleven.
 const COLUMNS = [
   "timestamp", "nama", "kontak", "kebutuhan", "pesan",
   "lang", "source", "ua", "status", "followup_at", "notes",
+  // first-visit attribution (P10 SEO F2)
+  "landing_page", "referrer",
+  "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term",
 ];
 /* ----------------------------------------------------------------------- */
 
@@ -40,8 +45,20 @@ function ensureSheet_() {
     sh = ss.insertSheet(SHEET_NAME);
     sh.appendRow(COLUMNS);
     sh.setFrozenRows(1);
+  } else if (sh.getLastColumn() < COLUMNS.length) {
+    // existing Sheet from before new columns were added: extend the header
+    const from = sh.getLastColumn() + 1;
+    sh.getRange(1, from, 1, COLUMNS.length - from + 1).setValues([COLUMNS.slice(from - 1)]);
   }
   return sh;
+}
+
+/* Text for a cell. Anyone can POST, so a value starting with = + - @ would
+   run as a formula in the Sheet; a leading apostrophe keeps it plain text
+   (Sheets hides it, and getValues() returns the value without it). */
+function cell_(v, max) {
+  const s = String(v == null ? "" : v).trim().slice(0, max || 1000);
+  return /^[=+\-@]/.test(s) ? "'" + s : s;
 }
 
 function jsonOut_(obj) {
@@ -66,16 +83,24 @@ function doPost(e) {
     const now = new Date();
     sh.appendRow([
       now,                              // timestamp
-      String(d.nama || "").trim(),
-      kontak,
-      String(d.kebutuhan || "").trim(),
-      String(d.pesan || "").trim(),
-      String(d.lang || "").trim(),
-      String(d.source || "").trim(),
-      String(d.ua || "").trim(),
-      "NEW",                            // status — Hermes flips to DONE
+      cell_(d.nama),
+      cell_(kontak),
+      cell_(d.kebutuhan),
+      cell_(d.pesan),
+      cell_(d.lang),
+      cell_(d.source),
+      cell_(d.ua),
+      d.qa === true ? "TEST" : "NEW",   // status — Hermes flips NEW to DONE;
+                                        // TEST rows (QA submits) are never polled
       "",                               // followup_at
       "",                               // notes
+      cell_(d.landing_page, 500),
+      cell_(d.referrer, 500),
+      cell_(d.utm_source, 200),
+      cell_(d.utm_medium, 200),
+      cell_(d.utm_campaign, 200),
+      cell_(d.utm_content, 200),
+      cell_(d.utm_term, 200),
     ]);
     return jsonOut_({ ok: true });
   } catch (err) {

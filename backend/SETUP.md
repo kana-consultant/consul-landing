@@ -43,6 +43,14 @@ Leave it `""` to keep the old "open WhatsApp" fallback while testing. With it se
 
 Test: submit the form → a new row appears in the Sheet with `status = NEW`.
 
+### Lead source columns (P10 SEO F2)
+
+Every lead also stores where the visitor **first** came from: `landing_page`, `referrer`, `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term` (columns L–R, after `notes`). The browser keeps the first visit for 90 days, so a visitor who arrives from an ad and comes back a week later is still tagged with the ad.
+
+- After updating `leads.gs`, **re-deploy a new version** (see the note above). The header row of an existing Sheet is extended automatically on the next lead; old rows keep empty cells in the new columns.
+- **Safe test lead:** open `https://consul.perfect10.id/?qa_lead=1&utm_source=qa&utm_medium=test` and submit. The row is stored with `status = TEST`, so Hermes (which polls `status=NEW`) never messages it. Delete the row afterwards.
+- Values that start with `= + - @` are stored with a leading apostrophe so they stay plain text (the form is public, and UTM values come from the URL).
+
 ---
 
 ## 4. Hermes polling (the follow-up loop)

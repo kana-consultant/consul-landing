@@ -29,7 +29,9 @@ function waLink(text) {
    only counted once the user actually reaches the thank-you page — a single,
    valid conversion instead of firing on the landing page. The wa.me link is
    passed along so thanks.html can offer a "re-open WhatsApp" fallback. */
-function goToWhatsAppThenThanks(url) {
+function goToWhatsAppThenThanks(url, cta) {
+  // whatsapp_click lands on thanks.html (this tab is about to unload)
+  window.P10Track?.trackOnNextPage("whatsapp_click", { cta: cta || null });
   // open WA first, synchronously inside the click handler, so the browser
   // treats it as a user-initiated action and does not block the popup
   window.open(url, "_blank", "noopener");
@@ -38,6 +40,7 @@ function goToWhatsAppThenThanks(url) {
 
 document.addEventListener("DOMContentLoaded", () => {
   initYear();
+  initAttribution();
   initWhatsAppCtas();
   initLeadForm();
   initHeaderScroll();
@@ -72,6 +75,43 @@ function initFaqToggle() {
   });
 }
 
+/* ---- first-visit attribution -> hidden form fields ----
+   Sales tags each enquiry by where the visitor first came from. On the first
+   visit we save the landing page URL, the external referrer and utm_* in
+   localStorage (first touch wins, kept for ATTR_DAYS), then copy them into
+   the hidden fields of #lead-form so they travel with the lead. If storage
+   is blocked, the current visit is used instead. */
+const ATTR_KEY = "p10_first_touch";
+const ATTR_DAYS = 90;
+const ATTR_FIELDS = ["landing_page", "referrer", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+
+function currentTouch() {
+  const q = new URLSearchParams(location.search);
+  let referrer = "";
+  try {
+    if (document.referrer && new URL(document.referrer).hostname !== location.hostname) referrer = document.referrer;
+  } catch (_) {}
+  const t = { landing_page: location.href, referrer, ts: Date.now() };
+  ATTR_FIELDS.slice(2).forEach((k) => (t[k] = q.get(k) || ""));
+  return t;
+}
+
+function initAttribution() {
+  let touch = null;
+  try {
+    const saved = JSON.parse(localStorage.getItem(ATTR_KEY) || "null");
+    if (saved && Date.now() - saved.ts < ATTR_DAYS * 864e5) touch = saved;
+  } catch (_) {}
+  if (!touch) {
+    touch = currentTouch();
+    try { localStorage.setItem(ATTR_KEY, JSON.stringify(touch)); } catch (_) {}
+  }
+  ATTR_FIELDS.forEach((k) => {
+    const el = document.getElementById(k);
+    if (el) el.value = String(touch[k] || "").slice(0, 500);
+  });
+}
+
 /* ---- footer year ---- */
 function initYear() {
   const y = document.getElementById("year");
@@ -83,7 +123,7 @@ function initWhatsAppCtas() {
   document.querySelectorAll(".fm-wa.js-cta, .f-wa.js-cta").forEach((el) => {
     el.addEventListener("click", (e) => {
       e.preventDefault();
-      goToWhatsAppThenThanks(waLink());
+      goToWhatsAppThenThanks(waLink(), el.dataset.src);
     });
   });
 }
@@ -117,8 +157,17 @@ function initLeadForm() {
       v("kebutuhan") && `Tantangan: ${v("kebutuhan")}`,
       v("pesan") && `Catatan: ${v("pesan")}`,
     ].filter(Boolean);
-    goToWhatsAppThenThanks(waLink(lines.join("\n")));
+    goToWhatsAppThenThanks(waLink(lines.join("\n")), "form_fallback");
   };
+
+  // consultation_form_start: first real edit of any field, once per page view
+  const onFirstEdit = () => {
+    form.removeEventListener("input", onFirstEdit);
+    form.removeEventListener("change", onFirstEdit);
+    window.P10Track?.track("consultation_form_start");
+  };
+  form.addEventListener("input", onFirstEdit);
+  form.addEventListener("change", onFirstEdit);
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -154,6 +203,10 @@ function initLeadForm() {
       source: location.href,
       ua: navigator.userAgent,
     };
+    // first-visit attribution from the hidden fields (initAttribution)
+    ATTR_FIELDS.forEach((k) => (payload[k] = v(k)));
+    // ?qa_lead=1 marks a test lead: stored with status TEST, Hermes skips it
+    if (new URLSearchParams(location.search).has("qa_lead")) payload.qa = true;
 
     btn?.classList.add("is-loading");
     btn && (btn.disabled = true);
@@ -169,6 +222,9 @@ function initLeadForm() {
       });
       // no-cors gives an opaque response (can't read status); a resolved
       // promise means the request left the browser — treat as submitted.
+      // Success only: the catch below never queues this event. Only the
+      // chosen challenge (a fixed option value) goes along, no contact data.
+      window.P10Track?.trackOnNextPage("consultation_form_submit", { challenge: payload.kebutuhan });
       window.location.href = "thanks.html";
     } catch (_) {
       // network error → surface the error and fall back to WhatsApp

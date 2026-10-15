@@ -40,6 +40,7 @@ function goToWhatsAppThenThanks(url, cta) {
 
 document.addEventListener("DOMContentLoaded", () => {
   initYear();
+  initAttribution();
   initWhatsAppCtas();
   initLeadForm();
   initHeaderScroll();
@@ -71,6 +72,43 @@ function initFaqToggle() {
         if (dict[key] != null) label.textContent = dict[key];
       } catch (e) {}
     }
+  });
+}
+
+/* ---- first-visit attribution -> hidden form fields ----
+   Sales tags each enquiry by where the visitor first came from. On the first
+   visit we save the landing page URL, the external referrer and utm_* in
+   localStorage (first touch wins, kept for ATTR_DAYS), then copy them into
+   the hidden fields of #lead-form so they travel with the lead. If storage
+   is blocked, the current visit is used instead. */
+const ATTR_KEY = "p10_first_touch";
+const ATTR_DAYS = 90;
+const ATTR_FIELDS = ["landing_page", "referrer", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+
+function currentTouch() {
+  const q = new URLSearchParams(location.search);
+  let referrer = "";
+  try {
+    if (document.referrer && new URL(document.referrer).hostname !== location.hostname) referrer = document.referrer;
+  } catch (_) {}
+  const t = { landing_page: location.href, referrer, ts: Date.now() };
+  ATTR_FIELDS.slice(2).forEach((k) => (t[k] = q.get(k) || ""));
+  return t;
+}
+
+function initAttribution() {
+  let touch = null;
+  try {
+    const saved = JSON.parse(localStorage.getItem(ATTR_KEY) || "null");
+    if (saved && Date.now() - saved.ts < ATTR_DAYS * 864e5) touch = saved;
+  } catch (_) {}
+  if (!touch) {
+    touch = currentTouch();
+    try { localStorage.setItem(ATTR_KEY, JSON.stringify(touch)); } catch (_) {}
+  }
+  ATTR_FIELDS.forEach((k) => {
+    const el = document.getElementById(k);
+    if (el) el.value = String(touch[k] || "").slice(0, 500);
   });
 }
 
@@ -165,6 +203,10 @@ function initLeadForm() {
       source: location.href,
       ua: navigator.userAgent,
     };
+    // first-visit attribution from the hidden fields (initAttribution)
+    ATTR_FIELDS.forEach((k) => (payload[k] = v(k)));
+    // ?qa_lead=1 marks a test lead: stored with status TEST, Hermes skips it
+    if (new URLSearchParams(location.search).has("qa_lead")) payload.qa = true;
 
     btn?.classList.add("is-loading");
     btn && (btn.disabled = true);

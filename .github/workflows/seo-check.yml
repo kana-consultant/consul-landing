@@ -1,0 +1,16 @@
+name: SEO check
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  seo-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # lastmod uses git history
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node tools/seo-check.mjs

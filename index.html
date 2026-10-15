@@ -50,6 +50,9 @@
   <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=2041952410057672&ev=PageView&noscript=1"/></noscript>
   <!-- End Meta Pixel Code -->
+
+  <!-- PostHog conversion events (see analytics.js) -->
+  <script src="analytics.js?v=1"></script>
 </head>
 
 <body>
@@ -300,7 +303,7 @@
             <div><h3 data-i18n="form.head">Mulai konsultasi</h3></div>
           </div>
           <p class="sub" data-i18n="form.sub">Isi singkat — tim Perfect10 yang akan menghubungi Anda.</p>
-          <form id="lead-form">
+          <form id="lead-form" class="ph-no-capture">
             <div class="field">
               <label for="nama"><span data-i18n="form.l1">Nama / Bisnis</span> <span class="opt" data-i18n="form.opt">(opsional)</span></label>
               <input id="nama" name="nama" type="text" placeholder="Nama atau nama bisnis Anda" data-i18n-ph="form.ph1" autocomplete="name" />
@@ -360,6 +363,6 @@
   </div>
 
   <script defer src="i18n.js?v=12"></script>
-  <script defer src="app.js?v=17"></script>
+  <script defer src="app.js?v=18"></script>
 </body>
 </html>

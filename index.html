@@ -325,6 +325,14 @@
               <label for="pesan"><span data-i18n="form.l3">Catatan singkat</span> <span class="opt" data-i18n="form.opt">(opsional)</span></label>
               <textarea id="pesan" name="pesan" placeholder="Contoh: tim CS kewalahan balas chat, ingin otomatis…" data-i18n-ph="form.ph3"></textarea>
             </div>
+            <!-- first-visit attribution, filled by app.js (initAttribution) -->
+            <input type="hidden" id="landing_page" name="landing_page" />
+            <input type="hidden" id="referrer" name="referrer" />
+            <input type="hidden" id="utm_source" name="utm_source" />
+            <input type="hidden" id="utm_medium" name="utm_medium" />
+            <input type="hidden" id="utm_campaign" name="utm_campaign" />
+            <input type="hidden" id="utm_content" name="utm_content" />
+            <input type="hidden" id="utm_term" name="utm_term" />
             <button type="submit" class="btn btn--wa btn--block btn--lg">
               <span data-i18n="form.submit">Kirim — tim kami hubungi Anda</span>
             </button>
@@ -360,6 +368,6 @@
   </div>
 
   <script defer src="i18n.js?v=12"></script>
-  <script defer src="app.js?v=17"></script>
+  <script defer src="app.js?v=18"></script>
 </body>
 </html>

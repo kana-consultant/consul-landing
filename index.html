@@ -27,6 +27,39 @@
   <meta name="twitter:description" content="Konsultan AI: kami bantu petakan, rancang, dan terapkan automation yang paling berdampak untuk bisnis Anda." />
   <meta name="twitter:image" content="https://consul.perfect10.id/assets/og-cover.png" />
 
+  <!-- Structured data (P10 SEO D4). Every text value is copied from visible
+       copy: name/logo = header logo, Service name = H1, description = hero
+       lead, serviceType = footer line. Keep them in sync when copy changes. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://consul.perfect10.id/#organization",
+        "name": "Perfect10",
+        "url": "https://consul.perfect10.id/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://consul.perfect10.id/assets/logo.webp",
+          "width": 384,
+          "height": 131
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://consul.perfect10.id/#service",
+        "name": "AI Automation untuk Meningkatkan Efisiensi Operasional Bisnis",
+        "serviceType": "Konsultan AI",
+        "description": "Kami dampingi Anda untuk menemukan proses yang paling menyita waktu, lalu membangun automasi AI yang memberikan dampak nyata bagi bisnis Anda.",
+        "provider": { "@id": "https://consul.perfect10.id/#organization" },
+        "areaServed": { "@type": "Country", "name": "Indonesia" },
+        "url": "https://consul.perfect10.id/"
+      }
+    ]
+  }
+  </script>
+
   <meta name="theme-color" content="#0A0E1A" />
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />

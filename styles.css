@@ -426,6 +426,9 @@ h3 { font-size: 19px; font-weight: 700; letter-spacing: -.012em; }
   font-size: 13px; color: var(--d-muted, #9aa0b4); line-height: 1.55;
 }
 .sol .sol-fit-lbl { font-weight: 700; color: #C4B5FD; }
+.sol .sol-more { display: inline-block; margin-top: 12px; font-size: 14.5px; font-weight: 700; color: #C4B5FD; text-decoration: none; }
+.sol .sol-more:hover { text-decoration: underline; }
+.sol .sol-more:focus-visible { outline: 2px solid #C4B5FD; outline-offset: 3px; border-radius: 4px; }
 
 /* ===== process / how it works ===== */
 .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; position: relative; }

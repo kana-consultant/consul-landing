@@ -10,6 +10,24 @@
   <meta name="description" content="Terima kasih. Data Anda sudah kami terima — tim Perfect10 akan menghubungi Anda via WhatsApp/telepon segera." />
 
   <meta name="theme-color" content="#0A0E1A" />
+
+  <!-- ?wa= carries the wa.me link, whose prefilled text can include the
+       visitor's name and phone (form fallback). Take it out of the address
+       bar before any tracker reads the URL; keep it for this tab only. -->
+  <script>
+    (function () {
+      var wa = null;
+      try {
+        wa = new URLSearchParams(location.search).get("wa");
+        var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+        if (wa) sessionStorage.setItem("p10_wa", wa);
+        else if (nav && nav.type === "reload") wa = sessionStorage.getItem("p10_wa");
+        else sessionStorage.removeItem("p10_wa");
+      } catch (e) {}
+      window.P10_WA = wa;
+      if (location.search) history.replaceState(null, "", location.pathname + location.hash);
+    })();
+  </script>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,6 +55,9 @@
   <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=2041952410057672&ev=Lead&noscript=1"/></noscript>
   <!-- End Meta Pixel Code -->
+
+  <!-- PostHog: flushes the conversion event queued on the landing page -->
+  <script src="analytics.js?v=1"></script>
 
   <style>
     :root{
@@ -147,7 +168,7 @@
       // ?wa= present = the visitor clicked a direct-WhatsApp CTA (WA opened in a
       // new tab). Absent = they submitted the lead form (we stored it, we follow
       // up). Copy differs per path.
-      var wa = new URLSearchParams(location.search).get("wa");
+      var wa = window.P10_WA; // read (and scrubbed from the URL) in <head>
       var key = function (k) { return wa && dict[k + "Wa"] != null ? dict[k + "Wa"] : dict[k]; };
 
       document.querySelectorAll("[data-t]").forEach(function (el) {
@@ -162,6 +183,9 @@
       var btn = document.getElementById("wa-btn");
       if (wa) {
         btn.setAttribute("href", wa);
+        btn.addEventListener("click", function () {
+          window.P10Track && P10Track.track("whatsapp_click", { cta: "thanks_reopen" });
+        });
       } else {
         // no link passed → hide the re-open button, keep the back-home button
         btn.style.display = "none";

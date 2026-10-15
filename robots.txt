@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://consul.perfect10.id/sitemap.xml

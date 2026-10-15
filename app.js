@@ -29,7 +29,9 @@ function waLink(text) {
    only counted once the user actually reaches the thank-you page — a single,
    valid conversion instead of firing on the landing page. The wa.me link is
    passed along so thanks.html can offer a "re-open WhatsApp" fallback. */
-function goToWhatsAppThenThanks(url) {
+function goToWhatsAppThenThanks(url, cta) {
+  // whatsapp_click lands on thanks.html (this tab is about to unload)
+  window.P10Track?.trackOnNextPage("whatsapp_click", { cta: cta || null });
   // open WA first, synchronously inside the click handler, so the browser
   // treats it as a user-initiated action and does not block the popup
   window.open(url, "_blank", "noopener");
@@ -121,7 +123,7 @@ function initWhatsAppCtas() {
   document.querySelectorAll(".fm-wa.js-cta, .f-wa.js-cta").forEach((el) => {
     el.addEventListener("click", (e) => {
       e.preventDefault();
-      goToWhatsAppThenThanks(waLink());
+      goToWhatsAppThenThanks(waLink(), el.dataset.src);
     });
   });
 }
@@ -155,8 +157,17 @@ function initLeadForm() {
       v("kebutuhan") && `Tantangan: ${v("kebutuhan")}`,
       v("pesan") && `Catatan: ${v("pesan")}`,
     ].filter(Boolean);
-    goToWhatsAppThenThanks(waLink(lines.join("\n")));
+    goToWhatsAppThenThanks(waLink(lines.join("\n")), "form_fallback");
   };
+
+  // consultation_form_start: first real edit of any field, once per page view
+  const onFirstEdit = () => {
+    form.removeEventListener("input", onFirstEdit);
+    form.removeEventListener("change", onFirstEdit);
+    window.P10Track?.track("consultation_form_start");
+  };
+  form.addEventListener("input", onFirstEdit);
+  form.addEventListener("change", onFirstEdit);
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -211,6 +222,9 @@ function initLeadForm() {
       });
       // no-cors gives an opaque response (can't read status); a resolved
       // promise means the request left the browser — treat as submitted.
+      // Success only: the catch below never queues this event. Only the
+      // chosen challenge (a fixed option value) goes along, no contact data.
+      window.P10Track?.trackOnNextPage("consultation_form_submit", { challenge: payload.kebutuhan });
       window.location.href = "thanks.html";
     } catch (_) {
       // network error → surface the error and fall back to WhatsApp

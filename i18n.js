@@ -60,6 +60,13 @@ const I18N = {
     "bukti.ph1": "Diskusi kebutuhan bersama tim klien",
     "bukti.ph2": "Sesi konsultasi lanjutan",
     "bukti.ph3": "Pendampingan & review online lintas tim",
+    "alt.ph1": "Dua anggota tim tersenyum dan mengacungkan jempol di sofa kantor klien",
+    "alt.ph2": "Dua orang mengacungkan jempol di meja kafe roti milik klien",
+    "alt.ph3": "Rapat video online dengan empat peserta dari tim klien",
+    "alt.uc1": "Halaman Atveti: latihan ujian dengan penilaian AI setara penguji, selisih ≤0,3 band dalam kurang dari 60 detik",
+    "alt.uc2": "Halaman URAI: platform asesmen talenta pre-hire dengan instrumen OCEAN, GMA, dan DISC",
+    "alt.uc4": "Konsol Willow Connect untuk Vantage Point: AI intake pasien dengan chat langsung dan profil pasien",
+    "alt.uc5": "Dashboard KUNCI Workspace: pusat kendali AI SDR untuk leads, balasan, dan tingkat konversi",
     "bukti.sub3": "Use case & hasil per klien",
     "bukti.uc1ind": "Exam Prep / Pendidikan",
     "bukti.uc1t": "Penilaian latihan instan, setara standar penguji",
@@ -189,6 +196,13 @@ const I18N = {
     "bukti.ph1": "Mapping needs with the client team",
     "bukti.ph2": "A follow-up consultation session",
     "bukti.ph3": "Online review & support across teams",
+    "alt.ph1": "Two team members smiling with a thumbs-up on a sofa at the client's office",
+    "alt.ph2": "Two people giving a thumbs-up at a table in the client's bakery café",
+    "alt.ph3": "Online video call with four participants from the client team",
+    "alt.uc1": "Atveti page: exam practice scored by AI to examiner level, within 0.3 band in under 60 seconds",
+    "alt.uc2": "URAI page: pre-hire talent assessment platform using OCEAN, GMA and DISC instruments",
+    "alt.uc4": "Willow Connect console for Vantage Point: AI patient intake with live chat and patient profile",
+    "alt.uc5": "KUNCI Workspace dashboard: AI SDR command center for leads, replies and conversion rate",
     "bukti.sub3": "Use cases & results per client",
     "bukti.uc1ind": "Exam Prep / Education",
     "bukti.uc1t": "Instant practice scoring, on the examiner's standard",
@@ -289,6 +303,10 @@ function applyLang(lang) {
   document.querySelectorAll("[data-i18n-ph]").forEach((el) => {
     const t = dict[el.getAttribute("data-i18n-ph")];
     if (t != null) el.setAttribute("placeholder", t);
+  });
+  document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+    const t = dict[el.getAttribute("data-i18n-alt")];
+    if (t != null) el.setAttribute("alt", t);
   });
 
   document.documentElement.lang = lang;

@@ -352,6 +352,9 @@ function initSliders() {
     let down = false, startX = 0, startLeft = 0, moved = false, lastX = 0, lastT = 0, vx = 0;
     slider.addEventListener("pointerdown", (e) => {
       if (e.pointerType !== "mouse") return;
+      // links/buttons inside a slide must stay clickable: pointer capture
+      // would retarget their click to the slider
+      if (e.target.closest("a, button")) return;
       down = true; moved = false; startX = lastX = e.clientX; startLeft = slider.scrollLeft;
       lastT = performance.now(); vx = 0;
       slider.classList.add("dragging");
